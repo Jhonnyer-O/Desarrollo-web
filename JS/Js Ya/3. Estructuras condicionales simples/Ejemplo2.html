@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<!--
+     Se ingresa por teclado el sueldo de un empleado (se puede ingresar un valor con decimales), 
+     si el sueldo supera los 3000 pesos, luego mostrar un mensaje indicando que debe abonar impuestos.
+-->
+    <script>
+        let sueldo;
+        sueldo = parseFloat(prompt('Ingrese el sueldo del empleado:'));
+        if (sueldo >= 3000) {
+            document.write('Como el sueldo es de ' + sueldo + ' debe abonar impuestos');
+        }
+    </script>
+
+</body>
+
+</html>
