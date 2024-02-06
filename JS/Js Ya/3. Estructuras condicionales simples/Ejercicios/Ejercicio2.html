@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        Solicitar que se ingrese dos veces una clave. Mostrar un mensaje si son iguales 
+        (tener en cuenta que para ver si dos variables tienen el mismo valor almacenado debemos utilizar el operador ==)
+    -->
+    <script>
+        let clave1, clave2;
+
+        clave1 = prompt('Por favor ingresar clave: ','Ingrese aqui');
+        clave2 = prompt('Por favor vuelva a ingresar contraseña: ','Ingrese aqui');
+
+        if(clave1 === clave2){
+            document.write('La contraseña coincide');
+        }else{
+            document.write('Las contraseñas no coinciden');
+        }
+    </script>
+</body>
+</html>
