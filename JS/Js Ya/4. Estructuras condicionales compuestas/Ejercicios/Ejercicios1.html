@@ -11,7 +11,21 @@
           del primero respecto al segundo.-->
 
     <script>
+        let num1, num2, diferencias, suma, producto;
         
+        num1 = parseInt(prompt("Por favor ingrese el primer numero: "));
+        num2 = parseInt(prompt("Por favor ingrese el segundo numero: "));
+        
+
+        if(num1 > num2){
+            diferencias = num1 - num2;
+            suma = num1 + num2;
+            document.write("El numero "+num1 +" Es mayor que: "+ num2+ " Y sus diferencia es: "+diferencias+ " Y su suma es de: "+suma );
+        }else{
+            diferencias= num2 - num1;
+            producto = num1 * num2;
+            document.write("El numero "+num2 +" Es mayor que: "+ num1+ " Y sus diferencia es: "+diferencias+ " Y su producto es de: "+producto);
+        }
 
     </script>
 </body>
