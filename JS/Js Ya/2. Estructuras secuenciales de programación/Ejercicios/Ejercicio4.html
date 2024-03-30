@@ -12,9 +12,15 @@
     -->
     
     <script>
-        let precio, cantidad;
+        let precio, cantidad, total;
 
         precio = parseInt(prompt('Ingrese precio del articulo: ','Ingrese precio'));
+        cantidad = parseInt(prompt('Ingrese cantidad de producto: ', 'Ingrese cantidad'));
+
+        total = precio * cantidad;
+
+        document.write('La cantidad a pagar es: '+total);
+
     </script>
 </body>
 </html>
