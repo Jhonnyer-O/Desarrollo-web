@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        Confeccionar un programa que permita 
+        cargar un número entero positivo de hasta tres cifras y muestre un mensaje indicando si tiene 1, 2, o 3 cifras.
+    -->
+    <script>
+        let num;
+
+        num = parseInt(prompt("Ingrese un numero de 1 a 3 cifras"));
+
+        if(num <10) {
+            document.write("El numero:" +num +" es de un digito");
+        }else if(num >= 10 && num <= 99){
+            document.write("El numero: "+num+" es de 2 digitos");
+        }else if(num >= 100 && num <= 999){
+            document.write("El numero: "+num+" es de 3 digitos");
+        }else{
+            document.write("Algo salio mal...");
+        }
+
+    </script>
+</body>
+</html>
