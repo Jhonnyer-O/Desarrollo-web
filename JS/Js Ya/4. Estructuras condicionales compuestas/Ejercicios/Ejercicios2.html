@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Se ingresan tres notas de un alumno, si el promedio es mayor o igual a 4 mostrar un mensaje 
+        'regular', sino 'reprobado'.-->
+
+    <script>
+        let nota1,nota2,nota3,promedio;
+
+        nota1 = parseInt(prompt("Por favor ingrese nota 1: "));
+        nota2 = parseInt(prompt("Por favor ingrese nota 1: "));
+        nota3 = parseInt(prompt("Por favor ingrese nota 1: "));
+
+        promedio = ((nota1 + nota2 + nota3) / 3);
+
+        if(promedio >= 4 ){
+            document.write("Has aprobado la materia con una nota de: "+promedio);
+        }else if(promedio <= 4){
+            document.write("Has Reprobado la materia con una nota de: "+promedio);
+        }else{
+            document.write("Valor ingresado es errado");
+        }
+        
+    </script>
+</body>
+</html>
