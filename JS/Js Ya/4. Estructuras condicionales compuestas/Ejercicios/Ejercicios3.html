@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Se ingresa por teclado un número positivo de uno o dos dígitos (1..99) 
+        mostrar un mensaje indicando si el número tiene uno o dos dígitos 
+        (recordar de convertir a entero con parseInt para preguntar posteriormente por una variable entera). 
+        Tener en cuenta qué condición debe cumplirse para tener dos dígitos un número entero.-->
+
+        <script>
+            let num1;
+
+            num1 = parseInt(prompt("Por favor digite numero de 1 a 2 digitos: "));
+
+            if(num1 >= 1 && num1 < 10){
+                document.write("El numero : "+ num1+ " Es un numero de un digito")
+            }else if ( num1 > 9 && num1 <100){
+                document.write("El numero: "+num1+ " Es un numero de 2 digitos")
+            }else{
+                document.write("Mala digitacion");
+            }
+        </script>
+</body>
+</html>
