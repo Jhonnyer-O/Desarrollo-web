@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Se ingresan tres valores por teclado, si todos son iguales se imprime la suma del primero con el 
+        segundo y a este resultado se lo multiplica por el tercero (tener en cuenta que puede haber tres condiciones simples)-->
+    
+    <script>
+        let numm1,num2,num3,suma,multi;
+
+        num1 = parseInt(prompt("?Digite el 1er numero"));
+        num2 = parseInt(prompt("?Digite el 2do numero"));
+        num3 = parseInt(prompt("?Digite el 3er numero"));
+
+        if(num1 == num2 && num2 == num3){
+            suma = num1 + num2;
+            multi = suma * num3;
+            document.write("Los tres numero son iguales su suma es: "+suma+" Con la multi del resultado por el tercero: "+multi);
+        }else{
+            document.write("Los numeros no son iguales");
+        }
+
+    </script>
+</body>
+</html>
