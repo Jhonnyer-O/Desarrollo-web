@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Escribir un programa que pida ingresar la coordenada de un punto en el plano, es decir dos valores enteros x e y.
+Posteriormente imprimir en pantalla en qué cuadrante se ubica dicho punto. 
+(1º Cuadrante si x > 0 Y y > 0 , 2º Cuadrante: x < 0 Y y > 0, etc.)-->
+
+        <script>
+            let x, y;
+
+            x = parseInt(prompt("Por favor digitar en coordenada x: "));
+            y = parseInt(prompt("Por favor digitar en coordenada y: "));
+
+            if (x > 0 && y > 0){
+                document.write("LAs coordenadas se encuentran en el primer cuadrante");
+            } else if (x < 0 && y > 0){
+                document.write("Las coordenadas indican en el segundo cuadrante");
+            } else{
+                document.wrtie("Error en digitar");
+            }
+            
+        </script>
+</body>
+</html>
