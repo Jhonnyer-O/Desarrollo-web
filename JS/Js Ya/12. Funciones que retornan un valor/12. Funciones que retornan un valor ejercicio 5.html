@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Confeccionar una función que solicite la carga de 5 valores 
+	por teclado y retorne su suma. 
+	*/
+	
+	function sumaR(){
+	
+		let suma = 0;
+		for(let x=1; x<=5;x++){
+			let valor = parseInt(prompt("Por favor ingrese el "+x+"er Numero: "));
+			suma = suma + valor;
+		}
+		return suma;	
+		
+	}
+	
+	let x = sumaR(); 
+	
+	document.write("La suma de los 5 digitos ingresados es de: "+x );
+
+    </script>
+
+</body>
+</html>
+    

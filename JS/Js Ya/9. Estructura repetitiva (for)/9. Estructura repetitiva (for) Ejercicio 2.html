@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+		/*
+		Desarrollar un programa que solicite la carga de 10 números e imprima la suma de lo últimos 5 valores ingresados.
+		*/
+		
+		let n = 0;
+		let suma = 0;
+		
+		for( let x = 1; x <= 10; x++){
+			n = parseInt(prompt("Por favor ingrese numero en posicion "+x+":"));
+			if ( x > 5){
+				suma = suma + n;
+			}
+		}
+		document.write("La suma de los ultimos valores es de: "+suma);
+
+    </script>
+
+</body>
+</html>

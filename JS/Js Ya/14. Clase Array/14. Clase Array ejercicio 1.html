@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Desarrollar un programa que permita ingresar un vector de 8 elementos, e informe:
+	El valor acumulado de todos los elementos del vector.
+	El valor acumulado de los elementos del vector que sean mayores a 36.
+	Cantidad de valores mayores a 50.
+	*/
+	
+	function cargar(v){
+		for(let x = 0; x<v.length; x++){
+			let valor = prompt("Ingrese el numero en: "+(x+1));
+			v[x] = parseInt(valor);
+		}
+	}
+	
+	function sumar(v){
+		let suma = 0;
+		for (let x=0; x<v.length;x++){
+			suma = suma + v[x];
+		}
+		document.write("Valor acomulado de los numeros: " +suma +"<br>");
+	}
+	
+	function sumar36(v){
+		let suma = 0;
+		for (let x=0; x<v.length;x++){
+			if(v[x] > 36){
+				suma = suma + v[x];
+			}	
+		}
+		document.write("Valor acomulado de los numeros mayores a 36: " +suma +"<br>");
+	}
+	
+	function mayores50(v){
+		let cant = 0;
+		for (let x=0; x<v.length;x++){
+			if(v[x] > 50){
+				cant = cant+1;
+			}	
+		}
+		document.write("Valor cantidad de valores mayores a 50:  " +cant +"<br>");
+	}
+	
+	let v = new Array(8);
+	cargar(v);
+	sumar(v);
+	sumar36(v);
+	mayores50(v);
+	
+    </script>
+
+</body>
+</html>
+    

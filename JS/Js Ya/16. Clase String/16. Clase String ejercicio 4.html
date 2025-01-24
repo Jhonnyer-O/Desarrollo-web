@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Ingresar una palabra o texto por teclado y determinar si es o no una palabra palíndromo. 
+	(Palabra que se lee de igual manera de adelante hacia atrás, que de atrás hacia delante) 
+	
+	ejemplo:
+	
+	let saludo = "Hola, mundo!";
+	let primeraLetra = saludo.charAt(0); // primeraLetra tendrá el valor "H" 
+	let ultimaLetra = saludo.charAt(saludo.length - 1); // últimaLetra tendrá el valor "!" 
+	*/
+	
+	
+	let texto = prompt('Ingrese una palabra o frase:');
+    let cant = 0;
+		
+		
+        for (let f = 0; f < texto.length; f++) { //REaliza el recorrido de la palabra ingresada
+            if (texto.charAt(f) == texto.charAt(texto.length - 1 - f)) { //CharAt()Evalua el carter en la posicion ingresada, Dentro de un arreglo con (f) realiza el recorrido de toda la palabra.
+			// y con -f hace recorrido inverso.
+                cant++; //el contador evalua y cuenta la cantidad de caracteres de la palabra
+            }// si la condicion de que la palabra es igual de delante y alrevez aumanta el contador "cant++;
+        }
+		
+        if (cant == texto.length) { //Si la cantidad ingresada es igual a la cantidad del texto ingresado
+            document.write(texto + ' se lee igual en ambas direcciones');
+			
+        } else {
+            document.write(texto + ' no se lee igual en ambas direcciones');
+        }
+		
+			
+	
+    </script>
+
+</body>
+</html>
+    

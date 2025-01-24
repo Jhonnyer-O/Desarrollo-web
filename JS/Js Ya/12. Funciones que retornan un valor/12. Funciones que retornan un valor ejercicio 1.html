@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Confeccionar una función a la cual le envíe tres enteros y retorne el mayor de ellos. 
+	*/
+	
+	let num1, num2, num3;
+	
+	function mayorN(n1,n2,n3){
+		if(n1 > n2 && n1 > n3){
+			return n1;
+		} else if( n2 > n1 && n2 > n3){
+			return n2;
+		} else if(n3 > n1 && n3 > n2){
+			return n3;
+		}
+	}
+	
+	num1 = parseInt(prompt("Por favor ingrese el primer numero: "));
+	num2 = parseInt(prompt("Por favor ingrese el segundo numero: "));
+	num3 = parseInt(prompt("Por favor ingrese el tercer numero: "));
+	
+	let x = mayorN(num1,num2,num3);
+	
+	
+	document.write("El numero mayor es el: "+x);
+	
+	
+    </script>
+
+</body>
+</html>
+    

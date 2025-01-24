@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/* Escribir un programa que lea 10 notas de alumnos y nos informe cuántos tienen notas mayores o iguales a 7 y cuántos menores.*/
+	
+	let x = 0;
+	let cant1 = 0;
+	let cant2 = 0;
+
+	
+	while(x < 5){
+	let nota;
+	nota = parseInt(prompt("Por favor ingrese la nota: "));
+		if( nota > 7){
+			cant1 = cant1 + 1;
+		}else{
+		cant2 = cant2 + 1;
+		}
+		x = x +1 ;
+	}
+	
+	document.write("La cantidad de notas mayores a 7 son : "+cant1);
+	document.write("<br>");
+	document.write("La cantidad de notas menores a 7 son : "+cant2);
+	
+
+    </script>
+
+</body>
+</html>
+    

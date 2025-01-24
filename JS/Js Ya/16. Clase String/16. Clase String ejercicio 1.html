@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	
+	/*
+	Ingresar una serie de nombres por teclado hasta que se cargue la palabra Fin, y mostrar cuántos nombres se ingresaron. 
+	*/
+	
+	let nom;
+	let cant = 0;
+	do{
+	 nom = prompt("por favor ingrese el nombre: ");
+	 cant++;
+	}while(nom != 'Fin'); //siempre es muy diferente "" que '' Ya que con "" no toma la palabra fin
+	//Para que no cuente la palabra fin
+	cant--;
+	document.write("Se ingresaron " +cant+" Palabras");
+	
+	
+    </script>
+
+</body>
+</html>
+    

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	
+	/*
+	
+    Elaborar una función a la cual le enviemos tres enteros y muestre el menor. 
+	*/
+	
+	function mostrarMenor(n1,n2,n3){
+		if(n1<n2&&n1<n3){
+			document.write("El numero menor ingresado es el primero: "+n1);
+		}else if(n2<n1&&n2<n3){
+			document.write("El numero menor ingresado es el segundo: "+n2);
+		}else if(n3<n1&&n3<n2){
+			document.write("El numero menor ingresado es el tercero: "+n3);
+		}else{
+			document.write("Hubo un error");
+		}
+		
+	}
+	
+	let num1, num2, num3;
+	
+	num1 = parseInt(prompt("Por favor ingrese el primer numero: "));
+	num2 = parseInt(prompt("Por favor ingrese el primer segundo: "));
+	num3 = parseInt(prompt("Por favor ingrese el primer tercer: "));
+	
+	mostrarMenor(num1,num2,num3);
+    </script>
+
+</body>
+</html>
+    

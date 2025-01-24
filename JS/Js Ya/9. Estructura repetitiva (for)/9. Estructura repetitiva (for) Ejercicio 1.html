@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Confeccionar un programa que lea 3 pares de datos, cada par de datos corresponde a la medida de la base y la altura de un triángulo. 
+	
+	El programa deberá informar:
+	a) De cada triángulo la medida de su base, su altura y su superficie.
+	b) La cantidad de triángulos cuya superficie es mayor a 12. 
+	*/
+	
+	let base;
+	let altura;
+	let superficie;
+	let superM = 0;
+	
+	for (let x = 1; x <= 3; x++) {
+            base = parseInt(prompt("Por favor digite la base del triangulo N°"+x+" :"));
+			altura = parseInt(prompt("Por favor ingresar la altura del triangulo: "));
+			
+			superficie = base * altura / 2;
+			if(superficie > 12){
+				superM++;
+			}
+			document.write("Triangulo N°: "+x+" <br>");
+			document.write("Base: "+base+" <br>");
+			document.write("Altura: "+altura+" <br> ");
+			document.write("Superficie: "+superficie+" <br><br> ");
+        }
+		
+		document.write("Cantidad de triangulos con superficie mayor a 12: "+superM);
+		
+		
+	
+    </script>
+
+</body>
+</html>

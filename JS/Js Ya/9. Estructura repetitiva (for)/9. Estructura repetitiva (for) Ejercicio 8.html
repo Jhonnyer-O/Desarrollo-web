@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Se cuenta con la siguiente información:
+	Las edades de 5 estudiantes del turno mañana.
+	Las edades de 6 estudiantes del turno tarde.
+	Las edades de 11 estudiantes del turno noche.
+	Las edades de cada estudiante deben ingresarse por teclado.
+	
+	
+	a) Obtener el promedio de las edades de cada turno (tres promedios).
+	b) Imprimir dichos promedios (promedio de cada turno).
+	c) Mostrar por pantalla un mensaje que indique cual de los tres turnos tiene un promedio de edades mayor.
+	*/
+	
+	let d;
+	let t;
+	let n;
+	
+	let edad;
+	
+	let cantD = 0;
+	let cantT = 0;
+	let cantN = 0;
+	
+	d = parseInt(prompt("Ingrese la cantidad de estudiantes de turno Diurno: "));
+	t = parseInt(prompt("Ingrese la cantidad de estudiantes de turno Tarde: "));
+	n = parseInt(prompt("Ingrese la cantidad de estudiantes de turno Noche: "));
+	
+	for(let x=1; x<=d; x++){
+		edad = parseInt(prompt("Por favor ingrese la edad del estudiante: "+x+" Del turno diurno: "));
+		if (edad > 0){
+			cantD+=edad;
+		}
+	}
+	
+	let promedioD = cantD/d;
+	
+	for(let x=1; x<=t; x++){
+		edad = parseInt(prompt("Por favor ingrese la edad del estudiante: "+x+" Del turno Tarde: "));
+		if (edad > 0){
+			cantT+=edad;
+		}
+	}
+	
+	let promedioT = cantT/t;
+	
+	for(let x=1; x<=n; x++){
+		edad = parseInt(prompt("Por favor ingrese la edad del estudiante: "+x+" Del turno Nocturno: "));
+		if (edad > 0){
+			cantN+=edad;
+		}
+	}
+	
+	let promedioN = cantN/n;
+	
+	
+	document.write("El promedio de edad del turno Diurno es de: "+promedioD+"<br>");
+	document.write("El promedio de edad del turno Tarde es de: "+promedioT+"<br>");
+	document.write("El promedio de edad del turno nocturno es de: "+promedioN+"<br>");
+	
+	if( promedioD > promedioT && promedioD > promedioN){
+		document.write("El promedio de edad mayor de los 3 turnos es el turno Diurno <br>");
+	}else if (promedioT > promedioD && promedioT > promedioN){
+		document.write("El promedio de edad mayor de los 3 turnos es el turno de la Tarde <br>");
+	}else if (promedioN > promedioD && promedioN > promedioT){
+		document.write("El promedio de edad mayor de los 3 turnos es el turno de la Noche <br>");
+	}
+	
+    </script>
+
+</body>
+</html>
+    

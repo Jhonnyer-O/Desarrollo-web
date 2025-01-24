@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Confeccionar un programa que permita ingresar un valor del 1 al 10 y nos muestre la tabla de multiplicar del mismo 
+	(los primeros 12 términos)
+	Ejemplo: Si ingreso 3 deberá aparecer en pantalla los valores 3, 6, 9, hasta el 36. 
+	*/
+	
+	let n;
+	let multiplicador;
+	let limite;
+	
+	n = parseInt(prompt("Ingrese un numero del 1 al 10: "));
+	limite = parseInt(prompt("Por favor ingresa el limite de la tabla: "));
+	
+	
+	for(let x=1; x<=limite; x++){
+		
+		multiplicador = n * x;
+		document.write(n+" x "+x+" = "+multiplicador+"<br>");  
+	}
+	
+	
+    </script>
+
+</body>
+</html>

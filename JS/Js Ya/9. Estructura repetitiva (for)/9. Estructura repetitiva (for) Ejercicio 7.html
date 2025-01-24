@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Se realiza la carga de 10 valores enteros por teclado. Se desea conocer:
+	a) La cantidad de valores negativos ingresados.
+	b) La cantidad de valores positivos ingresados.
+	c) La cantidad de múltiplos de 15.
+	d) El valor acumulado de los números ingresados que son pares.
+	*/
+	
+	
+	let cantN=0, cantP=0, multi=0, p=0;
+	
+	for(let x=1; x<= 10; x++){
+		
+		let num = parseInt(prompt("Ingresa numero en: "+x));
+		if(num < 0){
+			cantN++;
+		}else if(num > 0){
+			cantP++;
+		}
+		if(num % 15 == 0 && num != 0){
+			multi++;
+		}
+		if(num %2==0){
+			p = p + num;
+		}
+		
+	}
+	document.write('Cantidad de valores negativos:' + cantN + '<br>');
+    document.write('Cantidad de valores positivos:' + cantP + '<br>');
+    document.write('Cantidad de múltiplos de 15:' + multi + '<br>');
+    document.write('Suma de los valores pares ingresados:' + p + '<br>');
+	
+	
+	
+    </script>
+
+</body>
+</html>
+    

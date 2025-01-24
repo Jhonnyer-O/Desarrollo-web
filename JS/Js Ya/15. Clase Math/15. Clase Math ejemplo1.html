@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Ejemplo: Confeccionar un programa que permita cargar un valor comprendido entre 1 y 10. 
+            Luego generar un valor aleatorio entre 1 y 10, mostrar un mensaje con el número sorteado e indicar si ganó o perdió:
+
+            https://www.tutorialesprogramacionya.com/javascriptya/temarios/descripcion.php?inicio=20&cod=21
+        */
+
+        let selec = parseInt(prompt('Ingrese un valor entre 1 y 10'));
+
+        let num = parseInt(Math.random() * 30) + 1;
+        
+            if (num == selec)
+                document.write('Ganó el número que se sorteó es el ' + num);
+            else
+                document.write('Lo siento se sorteó el valor ' + num + ' y usted eligió el ' + selec);
+
+
+    </script>
+    
+</body>
+</html>

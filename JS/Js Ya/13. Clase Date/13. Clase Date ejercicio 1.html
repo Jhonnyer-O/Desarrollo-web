@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Confeccionar un programa que muestre en que cuatrimestre del año nos 
+	encontramos. Para esto obtener el mes. 
+	*/
+	let fecha;
+	fecha = new Date();
+	let mes = fecha.getMonth() +1;
+	
+	if(mes <= 4){
+		document.write("Nos encontramos en el primer cuadrante con el mes de: "+mes);
+	} else if(mes > 4 && mes <= 8){
+		document.write("Nos encontramos en el segundo cuatrimestre con el mes de: "+mes);
+	} else if(mes > 8 && mes <= 12){
+		document.write("Nos encontramos en el segundo cuatrimestre con el mes de: "+mes);
+	} else{
+		document.write("Hubo un error");
+	}
+	
+    </script>
+
+</body>
+</html>
+    

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Igual al anterior, pero que termine la aplicación sin contemplar mayúsculas ni minúsculas. 
+	Es decir que para salir se pueda teclear fin, Fin o FIN. 
+	*/
+	let nom;
+	let cant = 0;
+		do{
+			nom = prompt("por favor ingrese el nombre: ");
+			cant++;
+			nom = nom.toLowerCase();
+		}while(nom != 'fin'); //siempre es muy diferente "" que '' Ya que con "" no toma la palabra fin
+		//Para que no cuente la palabra fin
+		cant--;
+	document.write("Se ingresaron " +cant+" Palabras");
+    </script>
+
+</body>
+</html>
+    

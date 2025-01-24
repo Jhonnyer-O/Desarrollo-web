@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+	/*
+	Confeccionar una función que nos retorne un string con el siguiente formato:
+	Hoy es Lunes 9 de Agosto de 2021
+	Para poder recuperar el día de la semana debemos llamar al método:
+	let diaSemana=fecha.getDay();
+	El método getDay() devuelve el día de la semana de la fecha especificada, siendo 0 (Domingo) el primer día.
+	*/
+	
+	function diaSemana(d){
+		switch(d){
+			case 0:
+				return "Domingo";
+			
+			case 1:
+				return "Lunes";
+				
+			case 2:
+				return "Martes";
+				
+			case 3:
+				return "Miercoles";
+				
+			case 4:
+				return "Jueves";
+				
+			case 5:
+				return "Viernes";
+				
+			case 6:
+				return "Sabado";
+			default:
+				return "dia invalido";
+		}
+	}
+	
+	function retomarMes(mes){
+		switch(mes){
+			case 0:
+				return "Enero";
+			case 1:
+				return "Febrero";
+			case 2:
+				return "Marzo";
+			case 3:
+				return "Abril";
+			case 4:
+				return "Mayo";
+			case 5:
+				return "Junio";
+			case 6:
+				return "Julio";
+			case 7:
+				return "Agosto";
+			case 8:
+				return "Septiembre";
+			case 9:
+				return "Octubre";
+			case 10:
+				return "Noviembre";
+			case 11:
+				return "Diciembre";
+			default:
+				return "Mes invalido";
+		}
+	}
+	
+	function retornarText(){
+		let fecha = new Date();
+		let cadena = "Hoy es "+diaSemana(fecha.getDay())+ " " +fecha.getDate()+ " de " + retomarMes(fecha.getMonth()) + " de " + fecha.getFullYear();
+		return cadena;
+	}
+	
+	document.write(retornarText());
+	
+
+    </script>
+
+</body>
+</html>

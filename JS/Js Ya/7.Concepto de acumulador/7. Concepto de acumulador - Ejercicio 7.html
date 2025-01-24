@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+		/*Desarrollar un programa que permita cargar 5 números enteros y luego nos informe cuántos valores fueron pares y cuántos impares.
+			Emplear el operador "%" en la condición de la estructura condicional.
+
+			if (valor%2==0)
+
+			El operador "%" retorna el resto de la división valor / 2. Por ejemplo: 12 % 2, retorna 0; 13 % 2, retorna 1, porque el resto de dividir 13 en 2 es 1. */
+			
+			
+			let x = 0;
+			let num;
+			let cant1 = 0;
+			let cant2 = 0;
+			while( x < 5){
+				num = parseInt(prompt("Por favor digete numero en: "+x));
+				if(num%2==0){
+				cant1 =  cant1 + 1;
+				}else{
+				cant2 = cant2 + 1;
+				}
+				x = x + 1 ;
+			}
+			
+			document.write("La cantidad de pares son: "+cant1+" Y la cantidad de impares son: "+cant2);
+			
+			
+    </script>
+
+</body>
+</html>

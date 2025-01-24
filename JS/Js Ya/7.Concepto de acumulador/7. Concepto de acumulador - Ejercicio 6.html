@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+		/*
+		Realizar un programa que permita cargar dos listas de 3 valores cada una. Informar con un mensaje 
+		cual de las dos listas tiene un valor acumulado mayor (mensajes 'Lista 1 mayor', 'Lista 2 mayor', 
+		'Listas iguales')
+		Tener en cuenta que puede haber dos o más estructuras repetitivas en un algoritmo. 
+		*/
+		
+		let total1 = 0;
+        let x = 0;
+        let nro;
+        while (x < 3) {
+            nro = parseInt(prompt('Ingrese valor de la primer lista:'));
+            total1 = total1 + nro;
+            x = x + 1;
+        }
+        let total2 = 0;
+        x = 0;
+        while (x < 3) {
+            nro = parseInt(prompt('Ingrese valor de la segunda lista:', ''));
+            total2 = total2 + nro;
+            x = x + 1;
+        }
+        if (total1 > total2) {
+            document.write('Tiene mayor valor la lista1');
+        } 
+		else if (total1 < total2){
+                document.write('Tiene mayor valor la lista2');
+        } 
+		else {
+                document.write('Tienen el mismo valor acumulado las dos listas');
+            }
+        
+			
+    </script>
+
+</body>
+</html>
