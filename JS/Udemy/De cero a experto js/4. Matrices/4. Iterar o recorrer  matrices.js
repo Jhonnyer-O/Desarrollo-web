@@ -23,8 +23,8 @@ for(let x=0; x<matriz.length;x++){
 }
 
 /*
-	Reglones =     0               1          
+Reglones =         0               1          
 let matriz = [[100,200,300],[400,500,600, 1000]];
-	Columnas =  0  , 1 , 2  - 0 , 1 , 2 , 3
+Columnas =     0  , 1 , 2  - 0 , 1 , 2 , 3
 	
 */
