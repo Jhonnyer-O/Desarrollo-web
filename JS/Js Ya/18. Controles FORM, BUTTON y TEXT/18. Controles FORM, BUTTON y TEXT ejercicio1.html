@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <form>
+        <p>Ingrese el numero<input type="text" id="num"></p>
+        <p><input type="button" value="calcular" onClick="calcular()"></p>
+    </form>
+
+    <script>
+	
+	//Crear un programa que permita cargar un entero en un text y al presionar un botón nos muestre dicho valor elevado al cubo (emplear la función alert). 
+        function calcular() {
+			let  exp;
+            let num = document.getElementById('num').value;
+			num= parseInt(num);
+			exp =  Math.pow(num,3);
+			
+            alert('El numero ingresado es: ' + num);
+            alert('Y elevado al cubo es: ' + exp);
+        }
+    </script>
+
+</body>
+
+</html>
