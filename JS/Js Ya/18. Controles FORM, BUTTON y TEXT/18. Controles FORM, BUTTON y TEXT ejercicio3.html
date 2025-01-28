@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    
+    <form>
+        <p>Ingrese nombre:<input type="text" id="nombre"></p>
+        <p>Ingrese apellido:<input type="text" id="apellido"></p>
+        <p><input type="button" value="Concatenar datos ingresados" onClick="concatenar()"></p>
+        <p><input type="text" id="resultado"></p>
+    </form>
+
+    <script>
+	
+	/*
+	Cargar un nombre y un apellido en sendos text. Al presionar un botón, concatenarlos y mostrarlos en un tercer text 
+	(Tener en cuenta que podemos modificar la propiedad value de un objeto TEXT cuando ocurre un evento) 
+	*/
+        function concatenar() {
+            let nom = document.getElementById('nombre').value;
+            let ape = document.getElementById('apellido').value;
+            document.getElementById('resultado').value = nom + ape;
+        }
+    </script>
+
+</body>
+
+</html>
