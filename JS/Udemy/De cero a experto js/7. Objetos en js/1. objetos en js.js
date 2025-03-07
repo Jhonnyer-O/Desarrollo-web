@@ -28,3 +28,12 @@ console.log(persona);
 
 //Se llama a la funcion
 console.log(persona.nombreCompleto());
+
+//Creacion de un nuevo objeto
+let persona2 = new Object();
+persona2.nombre = 'Jhonnyer';
+persona2.direccion = 'Cra 1A4';
+persona2.tel = '3186969';
+
+console.log(persona2.nombre);
+console.log(persona2.direccion);
