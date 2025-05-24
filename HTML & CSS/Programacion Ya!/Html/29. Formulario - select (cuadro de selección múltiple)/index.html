@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prueba de formulario</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <form action="registrardatos.php" method="post">
+      Seleccione uno o varios colores (Presione Ctrl para seleccionar varios
+      colores)<br />
+      <select name="colores[]" size="4" multiple>
+        <option value="1">Rojo</option>
+        <option value="2">Verde</option>
+        <option value="3">Azul</option>
+        <option value="4">Amarillo</option>
+        <option value="5">Blanco</option>
+        <option value="6">Negro</option>
+        <option value="7">Naranja</option>
+        <option value="8">Violeta</option>
+      </select>
+      <br />
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>
