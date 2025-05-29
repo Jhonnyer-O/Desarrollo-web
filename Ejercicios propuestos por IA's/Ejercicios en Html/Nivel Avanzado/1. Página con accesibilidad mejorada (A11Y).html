@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Objetivo: Usar atributos de accesibilidad como aria-*, role, etiquetas <label> bien asociadas, y estructura semántica clara.
+Instrucciones:
+Crea un formulario de registro accesible:-->
+
+    <form aria-label="Formulario de registro">
+        <fieldset>
+            <legend>Registro de usuario</legend>
+
+            <label for="usuaruio">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" aria-required="true">
+            <br><br>
+
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required>
+            <br><br>
+
+            <label for="contraseña">Contraseña</label>
+            <input type="password" id="contraseña" name="contraseña" aria-describedby="regla">
+            <br>
+            <small id="regla">La contraseña debe tener al menos 8 caracteres.</small>
+            <br><br>
+
+            <button type="submit">Registrarse</button>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>
