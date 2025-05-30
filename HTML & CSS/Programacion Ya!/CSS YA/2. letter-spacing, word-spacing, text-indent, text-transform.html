@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--
+    Ahora veremos el objetivo de las siguientes propiedades que nos faltan:
+
+letter-spacing
+word-spacing
+text-indent
+text-transform
+La propiedad letter-spacing y word-spacing permiten indicar el espacio que debe haber entre los caracteres y entre las palabras.
+
+La propiedad text-indent, indenta la primera linea de un texto. A partir de la segunda línea, el texto aparece sin indentación. Podemos indicar un valor negativo con lo que la indentación es hacia la izquierda.
+
+Por último, la propiedad text-transform puede inicializarse con alguno de los siguientes valores:
+
+none - capitalize - lowercase - uppercase 
+Cada uno de estos valores transforman el texto como sigue:
+
+capitalize: Dispone en mayúsculas el primer caracter de cada palabra.
+lowercase: Convierte a minúsculas todas las letras del texto.
+uppercase: Convierte a mayúsculas todas las letras del texto.
+none: No provoca cambios en el texto.
+El siguiente ejemplo define reglas para los elementos h1 y p:
+    -->
+    <title>Problema</title>
+    <meta charset="UTF-8">
+    <style>
+        h1 {
+            letter-spacing: 5px;
+            word-spacing: 5px;
+            text-transform: capitalize;
+        }
+
+        p {
+            text-indent: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Este es un título de nivel 1</h1>
+    <p>Todo el texto siguiente se encuentra encerrado en el elemento de párrafo
+        y con el objetivo de ver el efecto de la propiedad text-indent.
+        La propiedad text-indent podemos inicializarla con un valor positivo,
+        como es el caso actual o podemos inicializarla con un valor negativo lo que
+        provocará que el texto de la primera línea del párrafo
+        comience en una columna inferior al de todo el bloque. </p>
+</body>
+
+</html>
