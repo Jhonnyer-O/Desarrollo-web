@@ -1,0 +1,12 @@
+.pregunta{
+    background-color: #ffff00;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+}
+
+.respuesta{
+    border-width: 20px;
+    border-style: ridge;
+    border-color: #000000;
+}
