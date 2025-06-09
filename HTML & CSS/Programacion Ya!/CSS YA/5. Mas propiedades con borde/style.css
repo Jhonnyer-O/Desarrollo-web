@@ -1,0 +1,21 @@
+.title{
+    background-color: #ffffcc;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+
+     border-top-width:5px;
+  border-right-width:3px;
+  border-bottom-width:3px;
+  border-left-width:1px;
+
+  border-top-style:dotted;
+  border-right-style:solid;
+  border-bottom-style:solid;
+  border-left-style:dotted;
+
+  border-top-color:#00ccff;
+  border-right-color:#00ff00;
+  border-bottom-color:#ff0000;
+  border-left-color:#ffaa00;
+}
