@@ -1,0 +1,23 @@
+*{
+    border-style: groove;
+    border-color: red;
+    border-width: 2px;
+}
+
+
+h1{
+    /*El margin es el que da espacio afuera de la etiqueta*/
+    margin: 10px 20px 25px 30px;
+    background-color: aqua;
+
+    /*El padir es el que le da el espacio dentro del elemento*/
+    padding: 10px 20px 25px 30px;
+}
+
+p{
+
+    
+    margin: 50px 20px 25px 30px;
+    background-color:chartreuse;
+    padding: 50px 1000px 25px 30px;
+}
