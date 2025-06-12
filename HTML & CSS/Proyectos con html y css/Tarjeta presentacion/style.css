@@ -1,0 +1,55 @@
+*{
+ border: 2px solid #ddd;
+ border:none;
+}
+body{
+    background-color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.tarjeta{
+    background-color: #ffffff;
+    color: #333;
+    padding: 30px;
+    margin: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.tarjeta h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.tarjeta h3{
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.tarjeta p{
+    font-size: 16px;
+    margin: 20px;
+}
+
+.tarjeta button{
+    background-color: teal;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tarjeta button:hover{
+    background-color: #006666;
+}
