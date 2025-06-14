@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.caja {
+  width: 300px;
+  padding: 30px;
+  border: 10px solid steelblue;
+  background-color: #d3eafd;
+  transition: all 0.3s ease;
+}
+
+.content-box {
+  box-sizing: content-box;
+}
+
+.border-box {
+  box-sizing: border-box;
+}
