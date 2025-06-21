@@ -1,0 +1,21 @@
+.contenedorform{
+    background-color: #ffe; 
+    width: 500px; 
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px 0 10px 0; 
+}
+
+.contenedorform form label{
+    width: 120px;
+    float: left;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+}
+
+.btnsubmit{
+    color: #f00;
+    background-color: #bbb;
+    border: 1px solid #fff;
+}
