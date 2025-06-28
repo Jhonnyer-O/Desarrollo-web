@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+    <title>Mi Portafolio Personal</title>
+</head>
+<body>
+	<header>
+		<h1> Jhonnyer Otalvaro - Desarrollador Web</h1>
+		<nav>
+			<ul>
+				<li><a href="#inicio">Inicio</a></li> 
+				<li><a href="#habilidades">Habilidades</a></li> 
+				<li><a href="#contacto">Contactame</a></li> 
+			</ul>
+		</nav>
+	</header>
+	
+	<main>
+		<section id="inicio" class="hero">
+			<div class="hero-content">
+				<img src="https://avatars.githubusercontent.com/u/64118164?v=4" alt="Foto de perfil" class="profile-pic">
+				<h2>¡Hola! Soy Jhonnyer Otalvaro</h2>
+				<p>Soy un aspirante a desarrollador web apasionado por crear experiencias digitales increíbles. Estoy aprendiendo HTML y CSS para construir mi camino en el mundo del desarrollo.</p>
+				<a href="contacto" class="btn">Contactame</a>
+			</div>
+		</section>
+		
+		<section id="habilidades" class="skills">
+			<h2>Mis habilidades</h2>
+			<div class="skills-grid">
+				<div class="skill-item">
+					<h3>HTML5</h3>
+					<!--<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1024px-HTML5_logo_and_wordmark.svg.png" alt="Foto de html" class="html-pic">-->
+					<p>La columna vertebral de la web, estructura y semántica.</p>
+				</div>
+				<div class="skill-item">
+                    <h3>CSS3</h3>
+                    <p>Estilo y diseño, haciendo que las páginas se vean geniales.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>JS</h3>
+                    <p>El lenguaje de programación que los desarrolladores utilizan para hacer páginas web interactivas</p>
+                </div>
+			</div>
+		</section>
+		
+		<section id="contacto" class="contact">
+            <h2>Contáctame</h2>
+            <p>¿Tienes alguna pregunta o proyecto en mente? ¡No dudes en contactarme!</p>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mi Portafolio Personal. Todos los derechos reservados.</p>
+    </footer>    
+</body>
+</html>
