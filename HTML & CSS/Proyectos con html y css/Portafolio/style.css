@@ -144,6 +144,8 @@ section h2::after {
     transition: transform 0.3s ease; /* Efecto al pasar el ratón */
 }
 
+
+
 .skill-item:hover {
     transform: translateY(-5px); /* Levanta un poco el ítem al pasar el ratón */
 }
@@ -156,16 +158,20 @@ section h2::after {
 
 /* --- Sección Contacto --- */
 .contact form {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto; /* Centra el formulario */
-    padding: 20px;
+    padding: 30px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: inset 0 0 8px rgba(0,0,0,0.05); /* Sombra interior */
 }
 
+.contact p{
+    text-align: center;
+}
+
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .form-group label {
@@ -178,7 +184,7 @@ section h2::after {
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
-    width: 100%; /* Ocupa el 100% del ancho disponible */
+    width: 95%; /* Ocupa el 100% del ancho disponible */
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
