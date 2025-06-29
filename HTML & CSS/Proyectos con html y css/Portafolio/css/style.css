@@ -49,6 +49,20 @@ header nav ul li a:hover {
     background-color: #34495e; /* Color de fondo al pasar el ratón */
 }
 
+header.scrolled {
+    background-color: #34495e; /* Un color un poco más oscuro o diferente */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Una sombra más pronunciada */
+    padding: 15px 0; /* Reduce un poco el padding */
+    transition: all 0.3s ease-in-out; /* Transición suave para todos los cambios */
+}
+
+/* Estilos para los mensajes de error del formulario */
+.error-message {
+    font-size: 0.9em;
+    color: red;
+    margin-top: 5px;
+}
+
 main{
 	max-width: 1200px; /* Ancho máximo del contenido principal */
     margin: 20px auto; /* Centra el contenido principal */
@@ -163,6 +177,106 @@ section h2::after {
 	 /* Mueve el h3 debajo del logo si lo pones primero en el HTML */
     order: 2; /* Si usas flexbox en skill-item para ordenar */
     margin-top: 10px; /* Espacio para el logo arriba */
+}
+
+/* Sección proyectos (Skills)*/
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas responsivas */
+    gap: 30px; /* Espacio entre los proyectos */
+    margin-top: 30px;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden; /* Asegura que la imagen no sobresalga de los bordes redondeados */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Usamos flexbox para el contenido de la tarjeta */
+    flex-direction: column; /* Apila el contenido verticalmente */
+}
+
+.project-card:hover {
+    transform: translateY(-8px); /* Levanta la tarjeta al pasar el ratón */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+}
+
+.project-card img {
+    width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Recorta la imagen para que cubra el área sin distorsionarse */
+    display: block; /* Elimina espacio extra debajo de la imagen */
+}
+
+.project-info {
+    padding: 20px;
+    flex-grow: 1; /* Permite que esta sección ocupe el espacio restante si la tarjeta es flex */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.6em;
+}
+
+.project-info p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Permite que el párrafo crezca y empuje el botón hacia abajo */
+}
+
+.project-info .project-links {
+    margin-top: auto; /* Empuja los enlaces hacia la parte inferior de la tarjeta */
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan si hay muchos */
+}
+
+.project-info .btn-project {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.project-info .btn-project:hover {
+    background-color: #2980b9;
+}
+
+.project-info .btn-secondary {
+    background-color: #7f8c8d; /* Color diferente para el segundo botón si existe */
+}
+
+.project-info .btn-secondary:hover {
+    background-color: #6c7a7b;
+}
+
+/* --- Media Queries para responsividad de proyectos --- */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuste para tablets */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Una sola columna en móviles */
+    }
+    .project-card img {
+        height: 180px;
+    }
 }
 
 /* --- Sección Contacto --- */
