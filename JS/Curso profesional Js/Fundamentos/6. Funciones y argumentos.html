@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejemplo de JavaScript</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <script>
+	//El ...numero indica que va a recibir un numero indeterminado de argumentos
+        function suma(...numeros){
+			let res = 0;
+			for (i=0; i<numeros.length; i++){
+				res +=numeros[i];
+			}
+			return res;
+			
+		}
+		
+		console.log(suma(2,3,4,5,9,7));
+		
+    </script>
+
+</body>
+
+</html>
