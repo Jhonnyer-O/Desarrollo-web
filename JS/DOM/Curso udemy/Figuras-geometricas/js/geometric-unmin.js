@@ -1,0 +1,61 @@
+const myModule = (() => {
+    "use strict";
+    let e = document.getElementById("result"),
+        t = document.querySelector("#btnPerimSquare"),
+        l = document.querySelector("#btnAreaSquare"),
+        r = document.querySelector("#btnPerimTriangle"),
+        n = document.querySelector("#btnAeaTriangle"),
+        i = document.querySelector("#btnDiameCircle"),
+        d = document.querySelector("#btnPerimCircle"),
+        a = document.querySelector("#btnAreaCircle"),
+        u = (e) => 4 * e,
+        c = (e) => e * e,
+        s = (e, t, l) => e + t + l,
+        E = (e, t) => (e * t) / 2,
+        m = (e) => 2 * e,
+        o = (e) => m(e) * Math.PI,
+        y = (e) => e * e * Math.PI;
+    t.addEventListener("click", () => {
+        let t = Number(document.getElementById("inputSide").value),
+            l = `\xc8l perimetro del Cuadrado es: ${u(t)} CM`;
+        e.innerText = l;
+    }),
+        l.addEventListener("click", () => {
+            let t = Number(document.getElementById("inputSide").value),
+                l = `\xc8l area del Cuadrado es: ${c(t)} CM^2`;
+            e.innerText = l;
+        }),
+        r.addEventListener("click", () => {
+            let t = document.getElementById("input1"),
+                l = document.getElementById("input2"),
+                r = document.getElementById("input3"),
+                n = Number(t.value),
+                i = Number(l.value),
+                d = Number(r.value),
+                a = `El perimetro del triangulo es: ${s(n, i, d)}`;
+            e.innerText = a;
+        }),
+        n.addEventListener("click", () => {
+            let t = document.getElementById("side1"),
+                l = document.getElementById("side2"),
+                r = Number(t.value),
+                n = Number(l.value),
+                i = `El perimetro del triangulo es: ${E(r, n)}`;
+            e.innerText = i;
+        }),
+        i.addEventListener("click", () => {
+            let t = Number(document.getElementById("sideR").value),
+                l = `El Diametro del Circulo es: ${m(t)}`;
+            e.innerText = l;
+        }),
+        d.addEventListener("click", () => {
+            let t = Number(document.getElementById("sideR").value),
+                l = `El Perimetro del Circulo es: ${o(t)}`;
+            e.innerText = l;
+        }),
+        a.addEventListener("click", () => {
+            let t = Number(document.getElementById("sideR").value),
+                l = `El Area del Circulo es: ${y(t)}`;
+            e.innerText = l;
+        });
+})();
