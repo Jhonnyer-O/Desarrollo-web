@@ -1,0 +1,48 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	border: none;
+}
+
+:root{
+	--bg-color: #f7f7f7;
+	--second-bg-color: #eaeaea;
+	--text-color: #3f3844;
+	--main-color: #ff5733;
+	--other-color: #5d6c83;
+}
+
+html{
+	font-size: 62.5%; /*1rem = 10px */
+	overflow-x: hidden;
+}
+
+body{
+	background-color: var(--bg-color);
+	color: var(--tex-color);
+	font-size: 1.6rem;
+	font-family: "AR One Sans", sans-serif;
+}
+
+section{
+	max-height: 100v;
+	padding: 10rem 10% 2rem;
+}
+
+
+.heading{
+	font-size: 4.5rem;
+	text-align: cener;
+}
+
+.heading-description{
+	font-size: 1.8rem;
+	margin-bottom: 3rem;
+	text-align:center;
+}
+
+span{
+	color: var(--main-color);
+}
