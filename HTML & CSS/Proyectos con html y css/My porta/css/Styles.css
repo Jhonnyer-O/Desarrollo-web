@@ -207,3 +207,46 @@ social media section
   transform: scale(1.1);
   transition: 0.5s ease;
 }
+
+/*
+About 
+*/
+
+.about {
+  background-color: var(--second-bg-color);
+}
+
+.about .heading {
+  text-align: start;
+}
+
+.about-img img {
+  width: 30vw;
+  border: 0.2rem solid var(--main-color);
+  border-radius: 50%;
+  box-shadow: 0 0 2.5rem var(--main-color);
+  cursor: pointer;
+  transition: 0.4s ease;
+  animation: floatImage 3s ease-in-out infinite;
+}
+
+.about-img img:hover {
+  box-shadow:
+    0 0 2.5rem var(--main-color),
+    0 0 3.5rem var(--main-color),
+    0 0 4.5rem var(--main-color);
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2.4rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
