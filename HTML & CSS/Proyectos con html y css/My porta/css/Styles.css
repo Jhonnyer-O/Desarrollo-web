@@ -31,9 +31,13 @@ section {
   padding: 10rem 10% 2rem;
 }
 
+/*
+Utilidades
+*/
+
 .heading {
   font-size: 4.5rem;
-  text-align: cener;
+  text-align: center;
 }
 
 .heading-description {
@@ -52,9 +56,9 @@ Header Section
 
 .header {
   position: fixed;
+  width: 100%;
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 100;
 
   display: flex;
@@ -67,8 +71,8 @@ Header Section
 
 .logo {
   font-size: 2.5rem;
-  font-weight: 700;
   color: var(--main-color);
+  font-weight: 700;
   transition-duration: 0.5s;
 }
 
@@ -89,13 +93,11 @@ Header Section
   text-transform: uppercase;
 }
 
-.navbar a:hover {
+.navbar a:hover,
+.navbar a.active {
   border-bottom-color: var(--main-color);
   color: var(--main-color);
   transform: scale(1.05);
-}
-
-.navbar a.active {
 }
 
 /*
@@ -162,4 +164,46 @@ social media section
   background-color: var(--main-color);
   color: var(--bg-color);
   box-shadow: 0 0 2.5rem var(--main-color);
+}
+
+.btn,
+.btn-ws {
+  display: inline-flex;
+  padding: 1rem 2.8rem;
+  margin: 1rem 3rem 1rem 0;
+  background-color: var(--main-color);
+  border-radius: 4rem;
+  font-size: 2rem;
+  color: var(--bg-color);
+  font-weight: 400;
+  transform: 0.3s ease;
+}
+
+.btn-ws {
+  display: inline-flex;
+  align-items: center;
+  background-color: green;
+}
+
+.btn-ws i {
+  font-size: 2.5rem;
+  padding-right: 0.7rem;
+}
+
+.btn-ws p {
+  margin: 0;
+  border-left: 0.2rem solid var(--bg-color);
+  padding-left: 0.7rem;
+}
+
+.btn:hover {
+  box-shadow: 0 0 1.6rem var(--main-color);
+  transform: scale(1.1);
+  transition: 0.5s ease;
+}
+
+.btn-ws:hover {
+  box-shadow: 0 0 1.6rem green;
+  transform: scale(1.1);
+  transition: 0.5s ease;
 }
