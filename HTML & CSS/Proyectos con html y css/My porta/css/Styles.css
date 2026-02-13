@@ -213,7 +213,11 @@ About
 */
 
 .about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--second-bg-color);
+  gap: 2rem;
 }
 
 .about .heading {
@@ -249,4 +253,52 @@ About
   100% {
     transform: translateY(0);
   }
+}
+
+.about-content {
+  padding: 0 4rem;
+}
+
+.about-content h2 {
+  line-height: 1.2;
+}
+
+.about-content h2 {
+  font-size: 3rem;
+}
+
+.about-content p {
+  margin: 2rem 0 3rem;
+}
+
+/*
+Skills Section
+*/
+
+.skills h3 {
+  display: inline-flex;
+  margin-bottom: 2rem;
+  border-bottom: 0.2rem solid var(--main-color);
+}
+
+.content-skill {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  text-align: center;
+}
+
+.item-skill span,
+.item-skill i {
+  display: block;
+  color: var(--tex-color);
+  font-weight: 600;
+}
+
+.item-skill {
+  padding: 1rem;
+}
+
+.item-skill i {
+  font-size: 5rem;
 }
