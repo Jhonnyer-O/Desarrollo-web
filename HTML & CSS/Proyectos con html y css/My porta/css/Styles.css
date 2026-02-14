@@ -511,3 +511,35 @@ form textarea:focus {
   outline: none;
   box-shadow: 0 0.2rem 0.2rem -0.1rem var(--main-color);
 }
+
+/*
+Footer
+*/
+
+.footer {
+  background-color: var(--second-bg-color);
+  padding: 40px 0;
+  text-align: center;
+  border-top: 0.2rem solid var(--main-color);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.arrow a {
+  display: inline-flex;
+  color: var(--main-color);
+  border: 0.2rem solid var(--main-color);
+  font-size: 3rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  transition: 0.3s ease;
+}
+
+.arrow a:hover {
+  box-shadow: 0 0 2.5rem var(--main-color);
+  transform: scale(1.1) translateY(-1rem);
+}
