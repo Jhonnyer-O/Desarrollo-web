@@ -442,3 +442,72 @@ Portfolio
 .portfolio-item p {
   margin-bottom: 2rem;
 }
+
+/*
+Contact Section
+*/
+
+.contact {
+  background-color: var(--bg-color);
+  text-align: center;
+}
+
+.contact-content {
+  display: flex;
+  gap: 6rem;
+  padding: 3rem 0;
+}
+
+.img-contact {
+  width: 50%;
+}
+
+.img-contact img {
+  width: 100%;
+  height: 58rem;
+}
+
+.contact form {
+  width: 50%;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 2rem;
+  border: 0.2rem solid var(--main-color);
+  padding: 3rem;
+  transition: all 0.3s ease;
+}
+
+.contact form:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 1.5rem var(--main-color);
+  cursor: alias;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  background-color: var(--second-bg-color);
+  border-bottom: 0.25rem solid var(--main-color);
+  border-radius: 0.8rem 0.8rem 0 0;
+  margin: 0.7rem 0;
+}
+
+form textarea {
+  margin-bottom: 2rem;
+}
+
+.btn-submit .btn {
+  width: auto;
+  cursor: pointer;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  box-shadow: 0 0.2rem 0.2rem -0.1rem var(--main-color);
+}
