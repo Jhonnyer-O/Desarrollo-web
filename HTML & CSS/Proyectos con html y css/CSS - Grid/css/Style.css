@@ -1,0 +1,14 @@
+section {
+  background-color: beige;
+  padding: 10px;
+  display: grid;
+  /* grid-template-columns: 100px 200px;
+  grid-template-rows: 100px 50px 200px; */
+  /* grid-template: 10% 50px 100px /100px 200px;*/
+  grid-template: 100px 50px 100px /1fr 2fr 1fr;
+  gap: 10px;
+}
+
+div {
+  background-color: lightseagreen;
+}
