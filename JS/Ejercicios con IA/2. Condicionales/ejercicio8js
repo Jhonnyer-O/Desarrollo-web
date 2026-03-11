@@ -1,0 +1,11 @@
+let saldo = 1000;
+let retiro = 1300;
+
+if( retiro <= saldo){
+    x = saldo - retiro;
+    console.log(`Retiro existoso, Tu saldo restante es: ${x}`);
+}else if( retiro > saldo){
+    console.log(`Fondos insuficientes`);
+}else{
+    console.log(`Monto invalido`);
+}
