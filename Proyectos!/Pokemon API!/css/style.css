@@ -1,0 +1,189 @@
+/* --- ESTILOS BASE Y FONDO --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 50px 20px;
+    min-height: 100vh;
+    /* Configuro un color de respaldo y los ajustes para que los GIFs cubran toda la pantalla */
+    background-color: #a0d2eb; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    /* Añado una transición para que el cambio de fondo no sea brusco */
+    transition: background-image 0.5s ease-in-out; 
+}
+
+/* Uso un pseudo-elemento para poner una capa blanquecina semitransparente sobre el fondo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.3); 
+    z-index: -1;
+}
+
+/* --- TÍTULO PRINCIPAL --- */
+h1 {
+    font-size: 3.5rem;
+    color: #ffcb05; /* Uso el color amarillo característico de la marca */
+    /* Aplico sombras múltiples para crear ese borde azul grueso y sólido típico del logo */
+    text-shadow: 
+        -3px -3px 0 #3b4cca,  
+         3px -3px 0 #3b4cca,
+        -3px  3px 0 #3b4cca,
+         3px  3px 0 #3b4cca,
+         4px  4px 5px rgba(0,0,0,0.5); 
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* --- CONTROLES DE BÚSQUEDA --- */
+.search-container {
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 200px;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #ffcc01; 
+    color: #3b4cca; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    /* Defino una transición suave para las animaciones de los botones */
+    transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+    background-color: #ffde52;
+    transform: scale(1.05); /* Hago que el botón crezca un poco al pasar el mouse */
+}
+
+/* --- CONTENEDORES DE RESULTADOS (TARJETA Y LISTA) --- */
+#pokemon-card, #pokemon-list-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    margin-top: 20px;
+}
+
+#pokemon-card {
+    width: 320px;
+    display: none; /* Mantengo la tarjeta oculta hasta que haya una búsqueda exitosa */
+}
+
+#poke-img {
+    width: 100%;
+    max-width: 200px; 
+    height: auto;
+    /* Aplico una sombra a la imagen del pokémon para que resalte más */
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+    margin: 10px 0;
+}
+
+#pokemon-list-container {
+    width: 80%;
+    max-width: 600px;
+    display: none; /* Oculto el contenedor de la lista hasta que el usuario la solicite */
+}
+
+.poke-grid {
+    display: grid;
+    /* Diseño una cuadrícula flexible que se ajusta sola según el espacio */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+    max-height: 400px;
+    overflow-y: auto; /* Añado scroll vertical para que la lista no ocupe toda la pantalla */
+    padding: 10px;
+}
+
+.mini-card {
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.mini-card img {
+    width: 60px;
+}
+
+/* --- COLORES POR TIPO ELEMENTAL --- */
+/* Defino los colores oficiales para cada tipo de Pokémon */
+.type-fire { background-color: #ff421c !important; }
+.type-water { background-color: #2c9be3 !important; }
+.type-grass { background-color: #62bc5a !important; }
+.type-electric { background-color: #ffdc31 !important; }
+.type-ice { background-color: #74ced9 !important; }
+.type-fighting { background-color: #bb5544 !important; }
+.type-poison { background-color: #9553cd !important; }
+.type-ground { background-color: #d6b55d !important; }
+.type-flying { background-color: #96a7f7 !important; }
+.type-psychic { background-color: #f366b9 !important; }
+.type-bug { background-color: #9fae1d !important; }
+.type-rock { background-color: #bcaaa4 !important; }
+.type-ghost { background-color: #6969af !important; }
+.type-dragon { background-color: #7c62e3 !important; }
+.type-dark { background-color: #705848 !important; }
+.type-steel { background-color: #aaaabb !important; }
+.type-fairy { background-color: #fdb9e9 !important; }
+.type-normal { background-color: #b1b1a1 !important; }
+
+/* --- ETIQUETAS DE TIPOS Y HABILIDADES --- */
+#poke-type span {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.ability-badge {
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Estilo especial para las habilidades ocultas: uso un borde discontinuo */
+.hidden-ability {
+    border: 2px dashed rgba(255, 255, 255, 0.6) !important;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+/* Configuro el color de texto por defecto para los badges */
+.type-badge, .ability-badge {
+    color: white !important;
+}
+
+/* Cambio el color del texto a oscuro en tipos donde el fondo es muy claro para asegurar legibilidad */
+.type-electric, .type-steel, .type-ice, .type-fairy {
+    color: #333 !important;
+}

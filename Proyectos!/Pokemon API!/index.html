@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéBuscador - SENA Project</title>
+    <!-- Enlazo mi hoja de estilos externa para mantener el diseño separado de la estructura -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Título principal de la aplicación -->
+    <h1>Poké-Buscador</h1>
+
+    <!-- Contenedor para la barra de búsqueda y los controles de usuario -->
+    <div class="search-container">
+        <!-- Input donde escribo el nombre del Pokémon para buscarlo -->
+        <input type="text" id="pokemonInput" placeholder="Nombre del Pokémon...">
+        <!-- Botón para disparar la búsqueda individual -->
+        <button id="searchBtn">Buscar</button>
+        <!-- Botón para cargar la lista masiva de las primeras 4 generaciones -->
+        <button id="listGenBtn">Generación 1-4</button>
+    </div>
+
+    <!-- Espacio dedicado para mostrar mensajes de error si el Pokémon no existe -->
+    <div id="error-msg" class="error"></div>
+
+    <!-- Tarjeta principal: aquí muestro el detalle visual y las estadísticas del Pokémon buscado -->
+    <div id="pokemon-card">
+        <h2 id="poke-name"></h2>
+        <img id="poke-img" src="" alt="Imagen">
+        
+        <div class="info">
+            <!-- Sección para mostrar los tipos elementales con sus iconos y colores -->
+            <p><strong>Tipo:</strong> <span id="poke-type"></span></p>
+            
+            <!-- Sección para las habilidades, configurada para resaltar la habilidad oculta -->
+            <p><strong>Habilidades:</strong> <span id="poke-abilities"></span></p>
+            
+            <!-- Datos físicos y estadísticas base obtenidos de la API -->
+            <p><strong>Altura:</strong> <span id="poke-height"></span></p>
+            <p><strong>Peso:</strong> <span id="poke-weight"></span></p>
+            <p><strong>XP Base:</strong> <span id="poke-exp"></span></p>
+            <p><strong>HP:</strong> <span id="poke-hp"></span></p>
+        </div>
+    </div>
+
+    <!-- Contenedor de la lista masiva: se activa al presionar el botón de generaciones -->
+    <div id="pokemon-list-container">
+        <h3>Pokémon (Gens 1-4)</h3>
+        <!-- Cuadrícula donde genero dinámicamente las mini tarjetas con JavaScript -->
+        <div id="poke-grid" class="poke-grid"></div>
+    </div>
+
+    <!-- Cargo mis archivos de JavaScript al final para asegurar que el HTML esté listo antes de ejecutarlos -->
+    <!-- Script principal de lógica y conexión con la API -->
+    <script src="js/apipoke.js"></script>
+    <!-- Script encargado exclusivamente de los fondos animados aleatorios -->
+    <script src="js/backgroups.js"></script>
+</body>
+</html>
