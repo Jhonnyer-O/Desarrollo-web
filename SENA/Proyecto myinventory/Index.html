@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Inventario - My Inventory</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <section id="vista-login" class="modulo-vista active">
+        <div class="tarjeta-material login-card">
+            <h2>Control de Acceso</h2>
+            <p class="subtitulo">Sistema de Gestión de Inventarios</p>
+
+            <form id="formulario-login">
+                <div class="campo-contenedor">
+                    <label for="usuario">Nombre de Usuario</label>
+                    <input type="text" id="usuario" placeholder="Ej: admin" required>
+                </div>
+
+                <div class="campo-contenedor">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" placeholder="••••••••" required>
+                </div>
+
+                <div id="login-error" class="mensaje-error" role="alert"></div>
+
+                <button type="submit" class="boton-material btn-primario">Ingresar</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="vista-dashboard" class="modulo-vista">
+        <header class="barra-superior">
+            <h1>My Inventory</h1>
+            <div class="usuario-perfil">
+                <span>Rol: Administrator</span>
+                <button id="btn-cerrar-sesion" class="boton-enlace">Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <main class="contenedor-principal">
+            <div class="alerta-stock-critico" id="alerta-global-stock" role="alert" style="display: none;">
+                <strong>Alerta del Sistema:</strong> ¡Atención! Hay productos por debajo del stock mínimo permitido
+                (<span id="cantidad-criticos">0</span>).
+            </div>
+
+            <h2>Tablero de Control</h2>
+            <div class="cuadrilla-menu">
+                <div class="tarjeta-navegacion" id="nav-ir-registro">
+                    <div class="icono-simulado">📦</div>
+                    <h3>Registrar Producto</h3>
+                    <p>Agregar nuevos elementos al inventario general.</p>
+                </div>
+
+                <div class="tarjeta-navegacion" id="nav-ir-reportes">
+                    <div class="icono-simulado">📊</div>
+                    <h3>Ver Reportes</h3>
+                    <p>Visualizar el stock actual y las alertas de inventario.</p>
+                </div>
+
+                <div class="tarjeta-navegacion" id="nav-ir-config">
+                    <div class="icono-simulado">⚙️</div>
+                    <h3>Configuración</h3>
+                    <p>Control de usuarios y parámetros globales.</p>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <section id="vista-registro" class="modulo-vista">
+        <header class="barra-superior">
+            <button class="btn-regresar-dashboard boton-atras">← Volver al Menú</button>
+            <h1>Gestión de Productos</h1>
+        </header>
+
+        <main class="contenedor-formulario">
+            <div class="tarjeta-material">
+                <h2>Registrar Nueva Mercancía</h2>
+                <form id="formulario-producto">
+
+                    <div class="campo-contenedor">
+                        <label for="prod-codigo">Código Único del Producto</label>
+                        <input type="text" id="prod-codigo" placeholder="Ej: 000001">
+                        <span class="ayuda-error" id="err-codigo"></span>
+                    </div>
+
+                    <div class="campo-contenedor">
+                        <label for="prod-nombre">Nombre Detallado</label>
+                        <input type="text" id="prod-nombre" placeholder="Ej: Cable UTP Categoría 6">
+                        <span class="ayuda-error" id="err-nombre"></span>
+                    </div>
+
+                    <div class="fila-campos">
+                        <div class="campo-contenedor">
+                            <label for="prod-precio">Precio Unitario (COP)</label>
+                            <input type="number" id="prod-precio" placeholder="Ej: 50000" min="0" step="1">
+                            <span class="ayuda-error" id="err-precio"></span>
+                        </div>
+
+                        <div class="campo-contenedor">
+                            <label for="prod-stock">Cantidad Inicial (Stock)</label>
+                            <input type="number" id="prod-stock" placeholder="0" min="0">
+                            <span class="ayuda-error" id="err-stock"></span>
+                        </div>
+                    </div>
+
+                    <div class="acciones-formulario">
+                        <button type="button"
+                            class="btn-cancelar-registro boton-material btn-secundario">Cancelar</button>
+                        <button type="submit" class="boton-material btn-primario">Guardar en Sistema</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </section>
+
+    <section id="vista-reportes" class="modulo-vista">
+        <header class="barra-superior">
+            <button class="btn-regresar-dashboard boton-atras">← Volver al Menú</button>
+            <h1>Reporte de Inventario</h1>
+        </header>
+
+        <main class="contenedor-principal">
+            <div class="tarjeta-material">
+                <div class="encabezado-tabla">
+                    <h2>Existencias en Tiempo Real</h2>
+                    <button id="btn-limpiar-inventario" class="boton-material btn-danger">Vaciar Inventario</button>
+                </div>
+
+                <div class="contenedor-tabla-responsiva">
+                    <table class="tabla-material">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombre del Producto</th>
+                                <th>Precio Unitario</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-productos-cuerpo"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <section id="vista-config" class="modulo-vista">
+        <header class="barra-superior">
+            <button class="btn-regresar-dashboard boton-atras">← Volver al Menú</button>
+            <h1>Configuración del Sistema</h1>
+        </header>
+
+        <main class="contenedor-formulario">
+            <div class="tarjeta-material">
+                <h2>Ajustes de Inventario</h2>
+                <p class="subtitulo">Define los parámetros lógicos globales de la aplicación.</p>
+
+                <div class="campo-contenedor">
+                    <label for="config-stock-minimo">Umbral de Stock Mínimo Global</label>
+                    <input type="number" id="config-stock-minimo" value="5" min="1">
+                    <p class="ayuda-input">Los productos con una cantidad igual o menor a este número activarán las
+                        alertas visuales.</p>
+                </div>
+
+                <button id="btn-guardar-config" class="boton-material btn-primario">Aplicar Cambios</button>
+            </div>
+        </main>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

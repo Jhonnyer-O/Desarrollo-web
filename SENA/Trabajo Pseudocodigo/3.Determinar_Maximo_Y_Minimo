@@ -1,0 +1,57 @@
+// Función que calcula el valor máximo y mínimo de un arreglo
+SubProceso calcularMaxMin(arreglo Por Referencia, tamano, maximo Por Referencia, minimo Por Referencia)
+    Definir i Como Entero;  
+    // Inicializamos el máximo y el mínimo con el primer elemento del arreglo
+    maximo <- arreglo[1];
+    minimo <- arreglo[1];
+    
+    // Recorremos el resto del arreglo para comparar los valores
+    Para i <- 2 Hasta tamano Con Paso 1 Hacer
+        // Evaluar si encontramos un número mayor al actual máximo
+        Si arreglo[i] > maximo Entonces
+            maximo <- arreglo[i];
+        FinSi
+        
+        // Evaluar si encontramos un número menor al actual mínimo
+        Si arreglo[i] < minimo Entonces
+            minimo <- arreglo[i];
+        FinSi
+    FinPara
+FinSubProceso
+
+Algoritmo Determinar_Maximo_Y_Minimo
+    Definir cantidad, i Como Entero;
+    Definir numeroMaximo, numeroMinimo Como Real;
+    
+    Escribir "¿Cuántos números desea ingresar al arreglo?";
+    Leer cantidad;
+    
+    // Validar que el tamaño sea un número válido
+    Mientras cantidad <= 0 Hacer
+        Escribir "Error: La cantidad debe ser mayor a cero. Intente de nuevo:";
+        Leer cantidad;
+    FinMientras
+    
+    // Definimos el arreglo con el tamaño indicado
+    Definir vectorNumeros Como Real;
+    Dimension vectorNumeros[cantidad];
+    
+    // Llenado del arreglo por teclado
+    Para i <- 1 Hasta cantidad Con Paso 1 Hacer
+        Escribir "Ingrese el número para la posición ", i, ":";
+        Leer vectorNumeros[i];
+    FinPara 
+    // Inicializamos las variables que recibirán los resultados de la función
+    numeroMaximo <- 0;
+    numeroMinimo <- 0;
+    
+    // Llamada a la función pasando el arreglo y las variables por referencia
+    calcularMaxMin(vectorNumeros, cantidad, numeroMaximo, numeroMinimo);
+    
+    // Mostrar los resultados finales
+    Escribir "=========================================";
+    Escribir "RESULTADOS DE LAS COMPARACIONES:";
+    Escribir "El valor MÁXIMO ingresado es: ", numeroMaximo;
+    Escribir "El valor MÍNIMO ingresado es: ", numeroMinimo;
+    Escribir "=========================================";
+FinAlgoritmo

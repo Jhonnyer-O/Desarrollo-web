@@ -1,0 +1,394 @@
+/* Estilos Globales y Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #212121; /* Alto contraste */
+    min-height: 100vh;
+}
+
+/* Control del Mapa de Navegación (Mostrar/Ocultar pantallas) */
+.modulo-vista {
+    display: none;
+}
+
+.modulo-vista.active {
+    display: block;
+}
+
+/* Componentes de Material Design (Tarjetas) */
+.tarjeta-material {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos de la Pantalla 1: Login */
+#vista-login {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#vista-login.active {
+    display: flex;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.subtitulo {
+    color: #616161;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+}
+
+/* Campos de Formulario */
+.campo-contenedor {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.campo-contenedor label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #1a73e8; /* Color de énfasis Material */
+}
+
+.campo-contenedor input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: border-color 0.2s;
+}
+
+.campo-contenedor input:focus {
+    outline: none;
+    border-color: #1a73e8;
+    background-color: #ffffff;
+}
+
+/* Botones con Guías de Material Design */
+.boton-material {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.btn-primario {
+    background-color: #1a73e8;
+    color: white;
+}
+
+.btn-primario:hover {
+    background-color: #1557b0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-secundario {
+    background-color: #e0e0e0;
+    color: #333333;
+}
+
+.btn-secundario:hover {
+    background-color: #d5d5d5;
+}
+
+/* Estilos de la Pantalla 2: Dashboard */
+.barra-superior {
+    background-color: #1a73e8;
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.usuario-perfil {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.boton-enlace {
+    background: none;
+    border: none;
+    color: #ffc107;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.contenedor-principal, .contenedor-formulario {
+    padding: 32px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.alerta-stock-critico {
+    background-color: #fce8e6;
+    border-left: 6px solid #d93025;
+    color: #a51d24;
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+.cuadrilla-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px; /* Más espacio entre tarjetas para mejorar la usabilidad */
+    margin-top: 24px;
+}
+
+.tarjeta-navegacion {
+    background: #ffffff;
+    border-radius: 12px; /* Esquinas un poco más suaves tipo Material You */
+    padding: 32px 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    border: 1px solid #e0e0e0;
+    
+    /* Flexbox mágico para centrar absolutamente todo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* Centra horizontalmente */
+    justify-content: center;   /* Centra verticalmente */
+    text-align: center;        /* Centra los textos de los párrafos */
+}
+
+/* Efecto Hover: Simula elevación física al pasar el mouse */
+.tarjeta-navegacion:hover:not(.deshabilitada) {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(26, 115, 232, 0.15); /* Sombra azul tenue de énfasis */
+    border-color: #1a73e8;
+}
+
+/* Ajustes del Icono Simulado */
+.icono-simulado {
+    font-size: 3rem;           /* Un poco más grande para destacar */
+    margin-bottom: 16px;       /* Despegue respecto al título */
+    background-color: #f1f3f4; /* Fondo circular sutil para el icono */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;        /* Forma de círculo perfecto */
+    transition: background-color 0.2s;
+}
+
+.tarjeta-navegacion:hover .icono-simulado {
+    background-color: #e8f0fe; /* El círculo se vuelve azul claro al pasar el mouse */
+}
+
+/* Ajustes del Título de la Tarjeta */
+.tarjeta-navegacion h3 {
+    font-size: 1.25rem;
+    font-weight: 500;          /* Grosor medio estándar de Material Design */
+    color: #202124;
+    margin-bottom: 8px;        /* Despegue respecto a la descripción */
+}
+
+/* Ajustes de la Descripción */
+.tarjeta-navegacion p {
+    font-size: 0.9rem;
+    color: #5f6368;
+    line-height: 1.4;
+    max-width: 220px;          /* Evita que el texto se estire demasiado a lo ancho */
+}
+
+.tarjeta-navegacion:hover:not(.deshabilitada) {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+.tarjeta-navegacion.deshabilitada {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.icono-simulado {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+/* Estilos de la Pantalla 3: Registro */
+.boton-atras {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.contenedor-formulario {
+    max-width: 600px;
+}
+
+.fila-campos {
+    display: flex;
+    gap: 16px;
+}
+
+.fila-campos .campo-contenedor {
+    flex: 1;
+}
+
+.acciones-formulario {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+/* Manejo de Errores Dinámicos (Usabilidad) */
+.mensaje-error {
+    color: #d93025;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    text-align: left;
+    display: none;
+}
+
+.ayuda-error {
+    color: #d93025;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 4px;
+}
+
+.input-invalido {
+    border-color: #d93025 !important;
+    background-color: #fce8e6 !important;
+}
+
+/* ---- Estilos de la Tabla de Reportes ---- */
+.encabezado-tabla {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.contenedor-tabla-responsiva {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-material {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.tabla-material th {
+    background-color: #f1f3f4;
+    color: #5f6368;
+    padding: 14px;
+    font-weight: 500;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.tabla-material td {
+    padding: 14px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tabla-material tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Estado de los Stocks (Usabilidad visual) */
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.badge-normal {
+    background-color: #e6f4ea;
+    color: #137333;
+}
+
+.badge-critico {
+    background-color: #fce8e6;
+    color: #c5221f;
+}
+
+/* Botón de Peligro / Eliminar */
+.btn-danger {
+    background-color: #d93025;
+    color: white;
+    width: auto;
+    padding: 10px 20px;
+}
+
+.btn-danger:hover {
+    background-color: #b31412;
+}
+
+.ayuda-input {
+    font-size: 0.8rem;
+    color: #5f6368;
+    margin-top: 4px;
+}
+/* ================= BOTONES DE ACCIÓN PARA LA TABLA ================= */
+.celda-acciones {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+.btn-accion {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-editar {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+}
+
+.btn-editar:hover {
+    background-color: #d2e3fc;
+    transform: scale(1.03);
+}
+
+.btn-eliminar-fila {
+    background-color: #fce8e6;
+    color: #d93025;
+}
+
+.btn-eliminar-fila:hover {
+    background-color: #fad2cf;
+    transform: scale(1.03);
+}

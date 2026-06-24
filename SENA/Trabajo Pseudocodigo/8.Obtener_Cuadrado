@@ -1,0 +1,20 @@
+// Función que recibe un número y devuelve su valor al cuadrado
+Funcion resultado <- CalcularCuadrado(num)
+    Definir resultado Como Real;
+    resultado <- num * num;
+FinFuncion
+
+Algoritmo Obtener_Cuadrado
+    Definir numeroUsuario, cuadradoResultado Como Real;
+    
+    Escribir "Por favor, ingrese un número para calcular su cuadrado:";
+    Leer numeroUsuario;
+    
+    // Llamada a la función pasando el número ingresado
+    cuadradoResultado <- CalcularCuadrado(numeroUsuario);
+    
+    // Mostrar el resultado en pantalla
+    Escribir "=========================================";
+    Escribir "El cuadrado de ", numeroUsuario, " es: ", cuadradoResultado;
+    Escribir "=========================================";
+FinAlgoritmo

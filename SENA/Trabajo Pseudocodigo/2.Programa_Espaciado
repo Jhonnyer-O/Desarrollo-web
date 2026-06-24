@@ -1,0 +1,33 @@
+// Función que recibe un texto y le añade un espacio después de cada carácter
+Funcion textoModificado <- ConvertirEspaciado(textoOriginal)
+    Definir textoModificado, letraActual Como Texto;
+    Definir i, totalCaracteres Como Entero;
+    
+    textoModificado <- "";
+    totalCaracteres <- Longitud(textoOriginal);
+    
+    // Recorremos el texto carácter por carácter
+    Para i <- 1 Hasta totalCaracteres Con Paso 1 Hacer
+        // Extraemos el carácter en la posición actual
+        letraActual <- Subcadena(textoOriginal, i, i);
+        
+        // Si es el último carácter, lo agregamos sin espacio al final (opcional)
+        // Para que quede exactamente como el ejemplo, agregamos el espacio a todos
+        textoModificado <- textoModificado + letraActual + " ";
+    FinPara
+FinFuncion
+
+Algoritmo Programa_Espaciado
+    Definir fraseUsuario, fraseConEspacios Como Texto;
+    
+    Escribir "Por favor, ingrese una frase o texto:";
+    Leer fraseUsuario;
+    
+    // Llamada a la función pasando el texto ingresado
+    fraseConEspacios <- ConvertirEspaciado(fraseUsuario);
+    
+    Escribir "=========================================";
+    Escribir "Texto original: ", fraseUsuario;
+    Escribir "Texto modificado: ", fraseConEspacios;
+    Escribir "=========================================";
+FinAlgoritmo

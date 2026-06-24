@@ -1,0 +1,38 @@
+// Función que calcula de manera simultánea el área y el perímetro
+SubProceso calcularAreaPerimetro(radio, area Por Referencia, perimetro Por Referencia)
+    Definir valor_pi Como Real;
+    valor_pi <- 3.14159265;
+    
+    // Aplicación de las fórmulas matemáticas
+    area <- valor_pi * (radio * radio);
+    perimetro <- 2 * valor_pi * radio;
+FinSubProceso
+
+Algoritmo Propiedades_Circunferencia
+    Definir radioUsuario, areaResultado, perimetroResultado Como Real;
+    
+    Escribir "Por favor, ingrese el radio de la circunferencia:";
+    Leer radioUsuario;
+    
+    // Validación para asegurar que el radio sea un valor lógico y positivo
+    Mientras radioUsuario <= 0 Hacer
+        Escribir "Error: El radio debe ser un número mayor a cero.";
+        Escribir "Intente nuevamente. Ingrese el radio:";
+        Leer radioUsuario;
+    FinMientras
+    
+    // Inicializamos las variables que recibirán los datos calculados en la función
+    areaResultado <- 0;
+    perimetroResultado <- 0;
+    
+    // Llamada a la función pasando el radio por valor, y los contenedores por referencia
+    calcularAreaPerimetro(radioUsuario, areaResultado, perimetroResultado);
+    
+    // Mostrar los resultados finales en pantalla
+    Escribir "=========================================";
+    Escribir "RESULTADOS DE LA CIRCUNFERENCIA:";
+    Escribir "Para un radio de: ", radioUsuario;
+    Escribir "-> El ÁREA calculada es: ", areaResultado;
+    Escribir "-> El PERÍMETRO calculado es: ", perimetroResultado;
+    Escribir "=========================================";
+FinAlgoritmo

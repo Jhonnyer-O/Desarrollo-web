@@ -1,0 +1,11 @@
+// Procedimiento encargado únicamente de mostrar el mensaje en pantalla
+SubProceso MostrarSaludo
+    Escribir "=========================================";
+    Escribir "¡Hola! Te saludo desde un procedimiento.";
+    Escribir "=========================================";
+FinSubProceso
+
+Algoritmo Programa_Saludo
+    // Llamada al procedimiento sin paréntesis vacíos
+    MostrarSaludo;
+FinAlgoritmo

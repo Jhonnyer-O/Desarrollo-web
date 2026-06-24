@@ -1,0 +1,78 @@
+// Función para sumar dos números
+Funcion resultado <- sumarNumeros(num1, num2)
+    Definir resultado Como Entero;
+    resultado <- num1 + num2;
+FinFuncion
+
+// Función para restar dos números
+Funcion resultado <- restarNumeros(num1, num2)
+    Definir resultado Como Entero;
+    resultado <- num1 - num2;
+FinFuncion
+
+// Función para multiplicar dos números
+Funcion resultado <- multiplicarNumeros(num1, num2)
+    Definir resultado Como Entero;
+    resultado <- num1 * num2;
+FinFuncion
+
+// Función para dividir dos números
+Funcion resultado <- dividirNumeros(num1, num2)
+    Definir resultado Como Real; // La división puede dar un número decimal
+    
+    Si num2 = 0 Entonces
+        Escribir "Error: No se puede dividir entre cero.";
+        resultado <- 0;
+    Sino
+        resultado <- num1 / num2;
+    FinSi
+FinFuncion
+
+Algoritmo Calculadora_Basica
+    Definir n1, n2, opcion Como Entero;
+    Definir resultadoDivision Como Real;
+    Definir resultadoEntero Como Entero;
+    
+    Escribir "=== BIENVENIDO A LA CALCULADORA ===";
+    Escribir "Ingrese el primer número entero:";
+    Leer n1;
+    
+    Escribir "Ingrese el segundo número entero:";
+    Leer n2;
+    
+    Escribir "";
+    Escribir "Seleccione la operación que desea realizar:";
+    Escribir "1. Sumar";
+    Escribir "2. Restar";
+    Escribir "3. Multiplicar";
+    Escribir "4. Dividir";
+    Leer opcion;
+    
+    Escribir "=========================================";
+    
+    // Estructura de control para ejecutar la función correspondiente
+    Segun opcion Hacer
+        1:
+            resultadoEntero <- sumarNumeros(n1, n2);
+            Escribir "El resultado de la suma es: ", resultadoEntero;
+        2:
+            resultadoEntero <- restarNumeros(n1, n2);
+            Escribir "El resultado de la resta es: ", resultadoEntero;
+        3:
+            resultadoEntero <- multiplicarNumeros(n1, n2);
+            Escribir "El resultado de la multiplicación es: ", resultadoEntero;
+        4:
+            // Validamos visualmente antes de imprimir el resultado de la función
+            Si n2 <> 0 Entonces
+                resultadoDivision <- dividirNumeros(n1, n2);
+                Escribir "El resultado de la división es: ", resultadoDivision;
+            Sino
+                // Ejecuta la función de todas formas para activar su lógica interna
+                resultadoDivision <- dividirNumeros(n1, n2);
+            FinSi
+        De Otro Modo:
+            Escribir "Opción no válida. Por favor ejecute el programa de nuevo.";
+    FinSegun
+    
+    Escribir "=========================================";
+FinAlgoritmo

@@ -1,0 +1,35 @@
+// Procedimiento que recibe los datos y arma la pequeña historia
+SubProceso GenerarHistoria(nombre, apellido, lugar)
+    Escribir "";
+    Escribir "==================================================================";
+    Escribir "                     UNA PEQUEÑA AVENTURA                         ";
+    Escribir "==================================================================";
+    Escribir "Un día cualquiera, el famoso investigador ", nombre, " ", apellido;
+    Escribir "empacó sus maletas de rapidez. Había recibido un mapa antiguo que";
+    Escribir "marcaba la ubicación de un tesoro perdido en ", lugar, ".";
+    Escribir "";
+    Escribir "Al llegar a ", lugar, ", todos los habitantes reconocieron a ";
+    Escribir "la familia ", apellido, " y le ofrecieron su ayuda.";
+    Escribir "Fue así como ", nombre, " logró resolver el misterio y se convirtió";
+    Escribir "en una leyenda local.";
+    Escribir "==================================================================";
+FinSubProceso
+
+Algoritmo Cuentos_Aleatorios
+    // Definimos las variables para almacenar los datos del usuario
+    Definir nombreUsuario, apellidoUsuario, lugarHistoria Como Texto;
+    
+    Escribir "=== CREADOR DE HISTORIAS ===";
+    
+    Escribir "Por favor, ingresa un nombre:";
+    Leer nombreUsuario;
+    
+    Escribir "Ingresa un apellido:";
+    Leer apellidoUsuario;
+    
+    Escribir "Ingresa un lugar (ciudad, país, planeta, etc.):";
+    Leer lugarHistoria;
+    
+    // Llamamos al procedimiento enviándole los tres datos guardados
+    GenerarHistoria(nombreUsuario, apellidoUsuario, lugarHistoria);
+FinAlgoritmo

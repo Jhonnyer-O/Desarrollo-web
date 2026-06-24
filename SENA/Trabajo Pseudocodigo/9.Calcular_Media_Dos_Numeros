@@ -1,0 +1,25 @@
+// Función que recibe dos números y devuelve su promedio o media
+Funcion resultado <- CalcularMedia(num1, num2)
+    Definir resultado Como Real;
+    
+    // Sumamos ambos números y los dividimos entre 2
+    resultado <- (num1 + num2) / 2;
+FinFuncion
+
+Algoritmo Calcular_Media_Dos_Numeros
+    Definir numero1, numero2, mediaResultado Como Real;
+    
+    Escribir "Ingrese el primer número:";
+    Leer numero1;
+    
+    Escribir "Ingrese el segundo número:";
+    Leer numero2;
+    
+    // Llamada a la función pasando los dos números leídos por teclado
+    mediaResultado <- CalcularMedia(numero1, numero2);
+    
+    // Mostrar el resultado final en pantalla
+    Escribir "=========================================";
+    Escribir "La media de ", numero1, " y ", numero2, " es: ", mediaResultado;
+    Escribir "=========================================";
+FinAlgoritmo

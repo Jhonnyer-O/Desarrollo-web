@@ -1,0 +1,54 @@
+// Subrutina que valida las credenciales e incrementa los intentos si falla
+Funcion exito <- Login(usuario, contrasena, intentos Por Referencia)
+    Definir exito Como Logico;
+    
+    // Validación de las credenciales asignadas
+    Si usuario = "usuario1" Y contrasena = "asdasd" Entonces
+        exito <- Verdadero;
+    Sino
+        exito <- Falso;
+        // Si falla, se incrementa el contador del programa principal
+        intentos <- intentos + 1; 
+    FinSi
+FinFuncion
+
+Algoritmo Sistema_De_Autenticacion
+    Definir user, password Como Texto;
+    Definir contadorIntentos, maxIntentos Como Entero;
+    Definir ingresado Como Logico;
+    
+    contadorIntentos <- 0;
+    maxIntentos <- 3;
+    ingresado <- Falso;
+    
+    Escribir "=== CONTROL DE ACCESO ===";
+    
+    // El ciclo se repite mientras no haya ingresado y le queden intentos disponibles
+    Mientras ingresado = Falso Y contadorIntentos < maxIntentos Hacer
+        Escribir "Intento número: ", (contadorIntentos + 1), " de ", maxIntentos;
+        
+        Escribir "Ingrese su nombre de usuario:";
+        Leer user;
+        
+        Escribir "Ingrese su contraseña:";
+        Leer password;
+        
+        // Llamada a la subrutina pasándole las variables
+        ingresado <- Login(user, password, contadorIntentos);
+        
+        // Si no ingresó y todavía le quedan intentos, le avisa en pantalla
+        Si ingresado = Falso Y contadorIntentos < maxIntentos Entonces
+            Escribir "Credenciales incorrectas. Intente de nuevo.";
+            Escribir "-----------------------------------------";
+        FinSi
+    FinMientras
+    
+    // Validación del resultado final al salir del ciclo
+    Escribir "=========================================";
+    Si ingresado = Verdadero Entonces
+        Escribir "¡Acceso concedido! Bienvenido al sistema.";
+    Sino
+        Escribir "Acceso denegado. Se ha superado el número máximo de intentos.";
+    FinSi
+    Escribir "=========================================";
+FinAlgoritmo

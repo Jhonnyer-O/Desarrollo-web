@@ -1,0 +1,40 @@
+// Función que devuelve Verdadero si el primer número es múltiplo del segundo
+Funcion resultado <- EsMultiplo(num1, num2)
+    Definir resultado Como Logico;
+    
+    // Si num2 es cero, no se puede dividir
+    Si num2 = 0 Entonces
+        resultado <- Falso;
+    Sino
+        // Si el residuo es 0, significa que num1 es divisible exactamente entre num2
+        Si num1 Mod num2 = 0 Entonces
+            resultado <- Verdadero;
+        Sino
+            resultado <- Falso;
+        FinSi
+    FinSi
+FinFuncion
+
+Algoritmo Verificar_Multiplos
+    Definir numero1, numero2 Como Entero;
+    
+    Escribir "Ingrese el primer número entero:";
+    Leer numero1;
+    
+    Escribir "Ingrese el segundo número entero:";
+    Leer numero2;
+    
+    Escribir "=========================================";
+    
+    // Evaluamos los dos casos posibles usando la función
+    Si EsMultiplo(numero1, numero2) Entonces
+        Escribir "El número ", numero1, " es múltiplo de ", numero2, ".";
+    Sino
+        Si EsMultiplo(numero2, numero1) Entonces
+            Escribir "El número ", numero2, " es múltiplo de ", numero1, ".";
+        Sino
+            Escribir "Ninguno de los números ingresados es múltiplo del otro.";
+        FinSi
+    FinSi
+    Escribir "=========================================";
+FinAlgoritmo

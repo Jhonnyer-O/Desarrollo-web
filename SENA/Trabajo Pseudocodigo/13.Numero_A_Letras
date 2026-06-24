@@ -1,0 +1,37 @@
+// Procedimiento que recibe el número y lo muestra en letras
+SubProceso ConvertirNumeroALetras(num)
+    // Estructura de control para evaluar el valor del número
+    Segun num Hacer
+        1: Escribir "El número ingresado en letras es: UNO";
+        2: Escribir "El número ingresado en letras es: DOS";
+        3: Escribir "El número ingresado en letras es: TRES";
+        4: Escribir "El número ingresado en letras es: CUATRO";
+        5: Escribir "El número ingresado en letras es: CINCO";
+        6: Escribir "El número ingresado en letras es: SEIS";
+        7: Escribir "El número ingresado en letras es: SIETE";
+        8: Escribir "El número ingresado en letras es: OCHO";
+        9: Escribir "El número ingresado en letras es: NUEVE";
+        10: Escribir "El número ingresado en letras es: DIEZ";
+    FinSegun
+FinSubProceso
+
+Algoritmo Numero_A_Letras
+    Definir numeroUsuario Como Entero;
+    
+    Escribir "Por favor, ingrese un número entero del 1 al 10:";
+    Leer numeroUsuario;
+    
+    // Validación para asegurar que el número esté estrictamente en el rango solicitado
+    Mientras numeroUsuario < 1 O numeroUsuario > 10 Hacer
+        Escribir "Error: El número no está en el rango del 1 al 10.";
+        Escribir "Intente nuevamente. Ingrese un número:";
+        Leer numeroUsuario;
+    FinMientras
+    
+    Escribir "=========================================";
+    
+    // Llamada al procedimiento pasando el número validado como parámetro
+    ConvertirNumeroALetras(numeroUsuario);
+    
+    Escribir "=========================================";
+FinAlgoritmo

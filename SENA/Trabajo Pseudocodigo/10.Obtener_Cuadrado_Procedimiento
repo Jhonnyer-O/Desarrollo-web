@@ -1,0 +1,20 @@
+// Procedimiento que recibe el número, calcula su cuadrado y lo muestra
+SubProceso CalcularYMostrarCuadrado(num)
+    Definir resultado Como Real;
+    
+    resultado <- num * num;
+    
+    Escribir "=========================================";
+    Escribir "El cuadrado del número ingresado es: ", resultado;
+    Escribir "=========================================";
+FinSubProceso
+
+Algoritmo Obtener_Cuadrado_Procedimiento
+    Definir numeroUsuario Como Real;
+    
+    Escribir "Por favor, ingrese un número cualquiera:";
+    Leer numeroUsuario;
+    
+    // Llamada al procedimiento pasando el número como argumento
+    CalcularYMostrarCuadrado(numeroUsuario);
+FinAlgoritmo

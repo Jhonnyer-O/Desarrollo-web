@@ -1,0 +1,96 @@
+// Procedimiento encargado únicamente de mostrar las opciones visuales
+SubProceso MostrarMenu
+    Escribir "=== MENÚ DE CALCULADORA ===";
+    Escribir "1. Sumar";
+    Escribir "2. Restar";
+    Escribir "3. Multiplicar";
+    Escribir "4. Dividir";
+    Escribir "5. Salir";
+    Escribir "===========================";
+FinSubProceso
+
+// Función para sumar
+Funcion resultado <- CalcularSuma(a, b)
+    Definir resultado Como Real;
+    resultado <- a + b;
+FinFuncion
+
+// Función para restar
+Funcion resultado <- CalcularResta(a, b)
+    Definir resultado Como Real;
+    resultado <- a - b;
+FinFuncion
+
+// Función para multiplicar
+Funcion resultado <- CalcularMultiplicacion(a, b)
+    Definir resultado Como Real;
+    resultado <- a * b;
+FinFuncion
+
+// Función para dividir
+Funcion resultado <- CalcularDivision(a, b)
+    Definir resultado Como Real;
+    Si b = 0 Entonces
+        Escribir "Error: No es posible dividir entre cero.";
+        resultado <- 0;
+    Sino
+        resultado <- a / b;
+    FinSi
+FinFuncion
+
+// Algoritmo Principal (Main)
+Algoritmo Calculadora_Con_Menu
+    Definir opcion Como Entero;
+    Definir num1, num2, resultadoFinal Como Real;
+    
+    opcion <- 0;
+    
+    // Ciclo para mantener el programa activo hasta que se elija la opción de salir
+    Mientras opcion <> 5 Hacer
+        
+        // Llamada al procedimiento para mostrar el menú
+        MostrarMenu;
+        Escribir "Seleccione una opción (1-5):";
+        Leer opcion;
+        
+        // Si el usuario elige una operación válida, se piden los datos en el main
+        Si opcion >= 1 Y opcion <= 4 Entonces
+            Escribir "Ingrese el primer número:";
+            Leer num1;
+            Escribir "Ingrese el segundo número:";
+            Leer num2;
+            
+            Escribir "-----------------------------------------";
+            
+            // Estructura de control para invocar la función correspondiente
+            Segun opcion Hacer
+                1:
+                    resultadoFinal <- CalcularSuma(num1, num2);
+                    Escribir "El resultado de la suma es: ", resultadoFinal;
+                2:
+                    resultadoFinal <- CalcularResta(num1, num2);
+                    Escribir "El resultado de la resta es: ", resultadoFinal;
+                3:
+                    resultadoFinal <- CalcularMultiplicacion(num1, num2);
+                    Escribir "El resultado de la multiplicación es: ", resultadoFinal;
+                4:
+                    resultadoFinal <- CalcularDivision(num1, num2);
+                    // Solo mostramos el resultado si el segundo número no fue cero
+                    Si num2 <> 0 Entonces
+                        Escribir "El resultado de la división es: ", resultadoFinal;
+                    FinSi
+            FinSegun
+            Escribir "-----------------------------------------";
+            Escribir ""; // Salto de línea decorativo
+            
+        Sino
+            Si opcion = 5 Entonces
+                Escribir "Gracias por usar la calculadora. ¡Hasta luego!";
+            Sino
+                Escribir "Opción no válida. Intente nuevamente.";
+                Escribir "";
+            FinSi
+        FinSi
+        
+    FinMientras
+FinAlgoritmo
