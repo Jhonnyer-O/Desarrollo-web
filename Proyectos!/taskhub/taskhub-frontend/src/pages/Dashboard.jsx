@@ -1,6 +1,6 @@
-import { useState, useEffect, useContext, useMemo } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import api from '../api/axios';
+import { useState, useEffect, useContext, useMemo } from "react";
+import { AuthContext } from "../context/AuthContext";
+import api from "../api/axios";
 import {
   LogOut,
   Plus,
@@ -12,8 +12,8 @@ import {
   Calendar,
   AlertCircle,
   ListTodo,
-  CheckCheck
-} from 'lucide-react';
+  CheckCheck,
+} from "lucide-react";
 
 const Dashboard = () => {
   const { user, logout } = useContext(AuthContext);
@@ -21,14 +21,14 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   // Campos del Formulario
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('Media');
-  const [dueDate, setDueDate] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("Media");
+  const [dueDate, setDueDate] = useState("");
 
   // Filtros y Búsqueda
-  const [filterStatus, setFilterStatus] = useState('Todas');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState("Todas");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetchTasks();
@@ -36,11 +36,13 @@ const Dashboard = () => {
 
   const fetchTasks = async () => {
     try {
-      const res = await api.get('/tasks');
-      const tasksData = Array.isArray(res.data) ? res.data : (res.data.tasks || []);
+      const res = await api.get("/tasks");
+      const tasksData = Array.isArray(res.data)
+        ? res.data
+        : res.data.tasks || [];
       setTasks(tasksData);
     } catch (err) {
-      console.error('Error al obtener tareas:', err);
+      console.error("Error al obtener tareas:", err);
     } finally {
       setLoading(false);
     }
@@ -55,24 +57,24 @@ const Dashboard = () => {
         title,
         description,
         priority,
-        dueDate: dueDate || null
+        dueDate: dueDate || null,
       };
 
-      const res = await api.post('/tasks', payload);
+      const res = await api.post("/tasks", payload);
       const newTask = res.data.task || res.data;
       setTasks([newTask, ...tasks]);
-      
+
       // Reset Form
-      setTitle('');
-      setDescription('');
-      setPriority('Media');
-      setDueDate('');
+      setTitle("");
+      setDescription("");
+      setPriority("Media");
+      setDueDate("");
     } catch (err) {
-      console.error('Error al crear la tarea:', err);
+      console.error("Error al crear la tarea:", err);
     }
   };
 
-  const handleUpdateStatus = async (task, newStatus) => {
+  const handleUpdatePriority = async (task, newPriority) => {
     if (!task?.id) return;
 
     try {
@@ -80,18 +82,25 @@ const Dashboard = () => {
         title: task.title,
         description: task.description,
         dueDate: task.dueDate,
-        priority: task.priority,
-        status: newStatus,
+        priority: newPriority,
+        status: task.status,
       };
 
       const res = await api.put(`/tasks/${task.id}`, updatedData);
       const updatedTask = res.data.task || res.data;
 
       setTasks((prevTasks) =>
-        prevTasks.map((t) => (t.id === task.id ? { ...t, ...updatedTask, status: newStatus } : t))
+        prevTasks.map((t) =>
+          t.id === task.id
+            ? { ...t, ...updatedTask, priority: newPriority }
+            : t,
+        ),
       );
     } catch (err) {
-      console.error('Error al actualizar estado:', err.response?.data || err.message);
+      console.error(
+        "Error al actualizar la prioridad:",
+        err.response?.data || err.message,
+      );
     }
   };
 
@@ -101,16 +110,16 @@ const Dashboard = () => {
       await api.delete(`/tasks/${id}`);
       setTasks((prevTasks) => prevTasks.filter((t) => t.id !== id));
     } catch (err) {
-      console.error('Error al eliminar tarea:', err);
+      console.error("Error al eliminar tarea:", err);
     }
   };
 
   // Estadísticas Calculadas
   const stats = useMemo(() => {
     const total = tasks.length;
-    const pending = tasks.filter((t) => t.status === 'Pendiente').length;
-    const inProgress = tasks.filter((t) => t.status === 'En Progreso').length;
-    const completed = tasks.filter((t) => t.status === 'Completada').length;
+    const pending = tasks.filter((t) => t.status === "Pendiente").length;
+    const inProgress = tasks.filter((t) => t.status === "En Progreso").length;
+    const completed = tasks.filter((t) => t.status === "Completada").length;
     return { total, pending, inProgress, completed };
   }, [tasks]);
 
@@ -118,19 +127,20 @@ const Dashboard = () => {
   const filteredTasks = useMemo(() => {
     return tasks.filter((task) => {
       const matchesStatus =
-        filterStatus === 'Todas' ? true : task.status === filterStatus;
+        filterStatus === "Todas" ? true : task.status === filterStatus;
       const matchesSearch =
         task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (task.description && task.description.toLowerCase().includes(searchTerm.toLowerCase()));
+        (task.description &&
+          task.description.toLowerCase().includes(searchTerm.toLowerCase()));
       return matchesStatus && matchesSearch;
     });
   }, [tasks, filterStatus, searchTerm]);
 
   // Colores para Prioridades
   const priorityColors = {
-    Alta: 'bg-red-50 text-red-700 border-red-200',
-    Media: 'bg-orange-50 text-orange-700 border-orange-200',
-    Baja: 'bg-blue-50 text-blue-700 border-blue-200',
+    Alta: "bg-red-50 text-red-700 border-red-200",
+    Media: "bg-orange-50 text-orange-700 border-orange-200",
+    Baja: "bg-blue-50 text-blue-700 border-blue-200",
   };
 
   return (
@@ -144,7 +154,10 @@ const Dashboard = () => {
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm font-medium text-gray-600">
-              Hola, <strong className="text-gray-900">{user?.fullName || user?.name || 'Usuario'}</strong>
+              Hola,{" "}
+              <strong className="text-gray-900">
+                {user?.fullName || user?.name || "Usuario"}
+              </strong>
             </span>
             <button
               onClick={logout}
@@ -186,7 +199,9 @@ const Dashboard = () => {
             </div>
             <div>
               <p className="text-xs text-gray-500 font-medium">En Progreso</p>
-              <p className="text-xl font-bold text-gray-800">{stats.inProgress}</p>
+              <p className="text-xl font-bold text-gray-800">
+                {stats.inProgress}
+              </p>
             </div>
           </div>
 
@@ -196,7 +211,9 @@ const Dashboard = () => {
             </div>
             <div>
               <p className="text-xs text-gray-500 font-medium">Completadas</p>
-              <p className="text-xl font-bold text-gray-800">{stats.completed}</p>
+              <p className="text-xl font-bold text-gray-800">
+                {stats.completed}
+              </p>
             </div>
           </div>
         </div>
@@ -211,7 +228,9 @@ const Dashboard = () => {
             </h2>
             <form onSubmit={handleCreateTask} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Título</label>
+                <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">
+                  Título
+                </label>
                 <input
                   type="text"
                   required
@@ -223,7 +242,9 @@ const Dashboard = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Descripción</label>
+                <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">
+                  Descripción
+                </label>
                 <textarea
                   rows="3"
                   value={description}
@@ -235,7 +256,9 @@ const Dashboard = () => {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Prioridad</label>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">
+                    Prioridad
+                  </label>
                   <select
                     value={priority}
                     onChange={(e) => setPriority(e.target.value)}
@@ -248,7 +271,9 @@ const Dashboard = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Fecha Límite</label>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">
+                    Fecha Límite
+                  </label>
                   <input
                     type="date"
                     value={dueDate}
@@ -272,7 +297,10 @@ const Dashboard = () => {
             {/* Buscador y Control de Filtros */}
             <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-3">
               <div className="relative">
-                <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Search
+                  size={18}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                />
                 <input
                   type="text"
                   value={searchTerm}
@@ -284,30 +312,38 @@ const Dashboard = () => {
 
               {/* Botones de Filtro */}
               <div className="flex items-center gap-1.5 overflow-x-auto pt-1">
-                {['Todas', 'Pendiente', 'En Progreso', 'Completada'].map((status) => (
-                  <button
-                    key={status}
-                    onClick={() => setFilterStatus(status)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
-                      filterStatus === status
-                        ? 'bg-indigo-600 text-white shadow-sm'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    {status === 'Todas' ? 'Todas' : status}
-                  </button>
-                ))}
+                {["Todas", "Pendiente", "En Progreso", "Completada"].map(
+                  (status) => (
+                    <button
+                      key={status}
+                      onClick={() => setFilterStatus(status)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
+                        filterStatus === status
+                          ? "bg-indigo-600 text-white shadow-sm"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                    >
+                      {status === "Todas" ? "Todas" : status}
+                    </button>
+                  ),
+                )}
               </div>
             </div>
 
             {/* Lista de Tareas */}
             {loading ? (
-              <p className="text-sm text-gray-500 py-8 text-center">Cargando tareas...</p>
+              <p className="text-sm text-gray-500 py-8 text-center">
+                Cargando tareas...
+              </p>
             ) : filteredTasks.length === 0 ? (
               <div className="bg-white p-12 rounded-xl shadow-sm border border-gray-100 text-center text-gray-500 space-y-2">
                 <AlertCircle size={32} className="mx-auto text-gray-300" />
-                <p className="font-medium text-gray-600">No se encontraron tareas</p>
-                <p className="text-xs text-gray-400">Intenta cambiar el filtro o agregar una nueva tarea.</p>
+                <p className="font-medium text-gray-600">
+                  No se encontraron tareas
+                </p>
+                <p className="text-xs text-gray-400">
+                  Intenta cambiar el filtro o agregar una nueva tarea.
+                </p>
               </div>
             ) : (
               <div className="space-y-3">
@@ -320,18 +356,44 @@ const Dashboard = () => {
                       <div className="flex items-center gap-2 flex-wrap">
                         <h3
                           className={`font-semibold ${
-                            task.status === 'Completada' ? 'line-through text-gray-400' : 'text-gray-800'
+                            task.status === "Completada"
+                              ? "line-through text-gray-400"
+                              : "text-gray-800"
                           }`}
                         >
                           {task.title}
                         </h3>
 
-                        {/* Badge de Prioridad */}
-                        {task.priority && (
-                          <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold border ${priorityColors[task.priority] || priorityColors.Media}`}>
-                            {task.priority}
-                          </span>
-                        )}
+                        {/* Selector de Prioridad Interactivo */}
+                        <select
+                          value={task.priority || "Media"}
+                          onChange={(e) =>
+                            handleUpdatePriority(task, e.target.value)
+                          }
+                          className={`text-[11px] px-2 py-0.5 rounded-full font-semibold border cursor-pointer focus:outline-none transition-colors ${
+                            priorityColors[task.priority] ||
+                            priorityColors.Media
+                          }`}
+                        >
+                          <option
+                            value="Baja"
+                            className="bg-white text-gray-800"
+                          >
+                            Baja
+                          </option>
+                          <option
+                            value="Media"
+                            className="bg-white text-gray-800"
+                          >
+                            Media
+                          </option>
+                          <option
+                            value="Alta"
+                            className="bg-white text-gray-800"
+                          >
+                            Alta
+                          </option>
+                        </select>
                       </div>
 
                       {task.description && (
@@ -344,11 +406,11 @@ const Dashboard = () => {
                         {/* Status Badge */}
                         <span
                           className={`inline-block px-2.5 py-0.5 rounded-full font-medium ${
-                            task.status === 'Completada'
-                              ? 'bg-green-100 text-green-700'
-                              : task.status === 'En Progreso'
-                              ? 'bg-yellow-100 text-yellow-700'
-                              : 'bg-gray-100 text-gray-700'
+                            task.status === "Completada"
+                              ? "bg-green-100 text-green-700"
+                              : task.status === "En Progreso"
+                                ? "bg-yellow-100 text-yellow-700"
+                                : "bg-gray-100 text-gray-700"
                           }`}
                         >
                           {task.status}
@@ -367,34 +429,34 @@ const Dashboard = () => {
                     {/* Iconos de Acción */}
                     <div className="flex items-center gap-1 shrink-0">
                       <button
-                        onClick={() => handleUpdateStatus(task, 'Pendiente')}
+                        onClick={() => handleUpdateStatus(task, "Pendiente")}
                         title="Marcar como Pendiente"
                         className={`p-1.5 rounded-md transition-colors ${
-                          task.status === 'Pendiente'
-                            ? 'text-indigo-600 bg-indigo-50 font-bold'
-                            : 'text-gray-400 hover:text-gray-600'
+                          task.status === "Pendiente"
+                            ? "text-indigo-600 bg-indigo-50 font-bold"
+                            : "text-gray-400 hover:text-gray-600"
                         }`}
                       >
                         <Clock size={18} />
                       </button>
                       <button
-                        onClick={() => handleUpdateStatus(task, 'En Progreso')}
+                        onClick={() => handleUpdateStatus(task, "En Progreso")}
                         title="Marcar En Progreso"
                         className={`p-1.5 rounded-md transition-colors ${
-                          task.status === 'En Progreso'
-                            ? 'text-yellow-600 bg-yellow-50 font-bold'
-                            : 'text-gray-400 hover:text-yellow-600'
+                          task.status === "En Progreso"
+                            ? "text-yellow-600 bg-yellow-50 font-bold"
+                            : "text-gray-400 hover:text-yellow-600"
                         }`}
                       >
                         <PlayCircle size={18} />
                       </button>
                       <button
-                        onClick={() => handleUpdateStatus(task, 'Completada')}
+                        onClick={() => handleUpdateStatus(task, "Completada")}
                         title="Marcar Completada"
                         className={`p-1.5 rounded-md transition-colors ${
-                          task.status === 'Completada'
-                            ? 'text-green-600 bg-green-50 font-bold'
-                            : 'text-gray-400 hover:text-green-600'
+                          task.status === "Completada"
+                            ? "text-green-600 bg-green-50 font-bold"
+                            : "text-gray-400 hover:text-green-600"
                         }`}
                       >
                         <CheckCircle2 size={18} />
