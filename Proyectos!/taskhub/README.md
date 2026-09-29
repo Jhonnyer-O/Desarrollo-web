@@ -100,11 +100,25 @@ Los endpoints expuestos por la API RESTful de **TaskHub** se encuentran estructu
 | `PATCH` | `/api/tasks/:id/status` | Actualizar únicamente el estado de una tarea. | `{ "status" }` | 🔒 Sí |
 | `DELETE` | `/api/tasks/:id` | Eliminar de forma permanente una tarea por su ID. | Parámetro de ruta: `id` | 🔒 Sí |
 
-### 🛠️ Instalación de librerías y Dependencias
-# ⚙️ 1. Backend (taskhub-backend)
+## 🛠️ Instalación de librerías y Dependencias
+### ⚙️ 1. Backend (taskhub-backend)
+
 Comando de instalación en un solo paso:
 ```bash
 npm install express cors dotenv sequelize pg pg-hstore jsonwebtoken bcryptjs nodemailer node-cron
 npm install -D nodemon
 ```
+Desglose de comandos individuales y propósito:
 
+| Librería | Comando de Instalación Individual | Propósito en el Proyecto |
+| :---: | :--- | :--- |
+|Express|npm install express|Framework principal para la creación de la API REST y rutas.|
+|CORS|npm install cors|Permite la comunicación entre el frontend y backend.|
+|Dotenv|npm install dotenv|Carga variables de entorno desde el archivo .env.|
+|Sequelize|npm install sequelize|ORM para interactuar con la base de datos PostgreSQL.|
+|PostgreSQL Driver|npm install pg pg-hstore|Cliente y utilidades para la conexión a PostgreSQL.|
+|JWT|npm install jsonwebtoken|Generación y verificación de tokens de autenticación.|
+|Bcryptjs|npm install bcryptjs|Encriptación y hasheo de contraseñas de usuarios.|
+|Nodemailer|npm install nodemailer|Servicio para el envío de correos desde el backend.|
+|Node-Cron|npm install node-cron|Programación de tareas automáticas en segundo plano.|
+|Nodemon (Dev)|npm install -D nodemon|Reinicio automático del servidor durante el desarrollo.|
