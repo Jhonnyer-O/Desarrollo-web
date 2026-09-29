@@ -108,6 +108,7 @@ Comando de instalación en un solo paso:
 npm install express cors dotenv sequelize pg pg-hstore jsonwebtoken bcryptjs nodemailer node-cron
 npm install -D nodemon
 ```
+
 Desglose de comandos individuales y propósito:
 
 | Librería | Comando de Instalación Individual | Propósito en el Proyecto |
@@ -122,3 +123,19 @@ Desglose de comandos individuales y propósito:
 |Nodemailer|npm install nodemailer|Servicio para el envío de correos desde el backend.|
 |Node-Cron|npm install node-cron|Programación de tareas automáticas en segundo plano.|
 |Nodemon (Dev)|npm install -D nodemon|Reinicio automático del servidor durante el desarrollo.|
+
+### 💻 2. Frontend (taskhub-frontend)
+
+Comando de instalación en un solo paso:
+```bash
+npm install axios lucide-react sweetalert2
+npm install -D tailwindcss postcss autoprefixer
+```
+
+Desglose de comandos individuales y propósito:
+| Librería | Comando de Instalación Individual | Propósito en el Proyecto |
+| :---: | :--- | :--- |
+| Axios | npm install axios | Cliente HTTP con interceptores para peticiones al backend. |
+| Lucide React | npm install lucide-react | Iconografía vectorial para botones, estados y el calendario. |
+| SweetAlert2 | npm install sweetalert2 | Modales y alertas emergentes interactivas de usuario. |
+| Tailwind CSS (Dev) | npm install -D tailwindcss postcss autoprefixer | Framework de estilos CSS utility-first y procesamiento. |
