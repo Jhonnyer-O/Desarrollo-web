@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, useMemo } from "react";
+import CalendarView from "../components/CalendarView";
 import { AuthContext } from "../context/AuthContext";
 import api from "../api/axios";
 import {
@@ -13,6 +14,8 @@ import {
   AlertCircle,
   ListTodo,
   CheckCheck,
+  LayoutGrid,
+  Calendar as CalendarIcon,
 } from "lucide-react";
 
 const Dashboard = () => {
@@ -29,6 +32,9 @@ const Dashboard = () => {
   // Filtros y Búsqueda
   const [filterStatus, setFilterStatus] = useState("Todas");
   const [searchTerm, setSearchTerm] = useState("");
+
+  // Calendario para visualizar las tareas
+  const [viewMode, setViewMode] = useState("list"); // 'list' o 'calendar'
 
   useEffect(() => {
     fetchTasks();
@@ -74,6 +80,33 @@ const Dashboard = () => {
     }
   };
 
+  // Actualizar Estado de la Tarea (Pendiente, En Progreso, Completada)
+  const handleUpdateStatus = async (task, newStatus) => {
+    if (!task?.id) return;
+
+    try {
+      const updatedData = {
+        title: task.title,
+        description: task.description,
+        dueDate: task.dueDate,
+        priority: task.priority,
+        status: newStatus,
+      };
+
+      const res = await api.put(`/tasks/${task.id}`, updatedData);
+      const updatedTask = res.data.task || res.data;
+
+      setTasks((prevTasks) =>
+        prevTasks.map((t) =>
+          t.id === task.id ? { ...t, ...updatedTask, status: newStatus } : t
+        )
+      );
+    } catch (err) {
+      console.error("Error al actualizar estado:", err);
+    }
+  };
+
+  // Actualizar Prioridad de la Tarea (Baja, Media, Alta)
   const handleUpdatePriority = async (task, newPriority) => {
     if (!task?.id) return;
 
@@ -93,13 +126,13 @@ const Dashboard = () => {
         prevTasks.map((t) =>
           t.id === task.id
             ? { ...t, ...updatedTask, priority: newPriority }
-            : t,
-        ),
+            : t
+        )
       );
     } catch (err) {
       console.error(
         "Error al actualizar la prioridad:",
-        err.response?.data || err.message,
+        err.response?.data || err.message
       );
     }
   };
@@ -171,7 +204,7 @@ const Dashboard = () => {
       </header>
 
       <main className="max-w-6xl mx-auto p-6 space-y-6">
-        {/*Tarjetas de Estadísticas */}
+        {/* Tarjetas de Estadísticas */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-3">
             <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded-lg">
@@ -218,7 +251,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Layout Principal: Form + Tareas */}
+        {/* Layout Principal: Form + Tareas/Calendario */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Formulario de Creación */}
           <div className="md:col-span-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-fit space-y-4">
@@ -292,186 +325,222 @@ const Dashboard = () => {
             </form>
           </div>
 
-          {/* Listado con Buscador y Filtros */}
+          {/* Listado / Calendario */}
           <div className="md:col-span-2 space-y-4">
-            {/* Buscador y Control de Filtros */}
-            <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-3">
-              <div className="relative">
-                <Search
-                  size={18}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-                />
-                <input
-                  type="text"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Buscar tareas por título o descripción..."
-                  className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                />
-              </div>
-
-              {/* Botones de Filtro */}
-              <div className="flex items-center gap-1.5 overflow-x-auto pt-1">
-                {["Todas", "Pendiente", "En Progreso", "Completada"].map(
-                  (status) => (
-                    <button
-                      key={status}
-                      onClick={() => setFilterStatus(status)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
-                        filterStatus === status
-                          ? "bg-indigo-600 text-white shadow-sm"
-                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                      }`}
-                    >
-                      {status === "Todas" ? "Todas" : status}
-                    </button>
-                  ),
-                )}
+            {/* Header de Alternancia de Vistas */}
+            <div className="flex items-center justify-between bg-white p-3 rounded-xl shadow-sm border border-gray-100">
+              <h2 className="text-sm font-bold text-gray-700">Vista de Tareas</h2>
+              <div className="flex bg-gray-100 p-1 rounded-lg">
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md font-medium transition-all ${
+                    viewMode === "list"
+                      ? "bg-white text-indigo-600 shadow-sm"
+                      : "text-gray-500 hover:text-gray-700"
+                  }`}
+                >
+                  <LayoutGrid size={15} />
+                  Lista
+                </button>
+                <button
+                  onClick={() => setViewMode("calendar")}
+                  className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md font-medium transition-all ${
+                    viewMode === "calendar"
+                      ? "bg-white text-indigo-600 shadow-sm"
+                      : "text-gray-500 hover:text-gray-700"
+                  }`}
+                >
+                  <CalendarIcon size={15} />
+                  Calendario
+                </button>
               </div>
             </div>
 
-            {/* Lista de Tareas */}
-            {loading ? (
-              <p className="text-sm text-gray-500 py-8 text-center">
-                Cargando tareas...
-              </p>
-            ) : filteredTasks.length === 0 ? (
-              <div className="bg-white p-12 rounded-xl shadow-sm border border-gray-100 text-center text-gray-500 space-y-2">
-                <AlertCircle size={32} className="mx-auto text-gray-300" />
-                <p className="font-medium text-gray-600">
-                  No se encontraron tareas
-                </p>
-                <p className="text-xs text-gray-400">
-                  Intenta cambiar el filtro o agregar una nueva tarea.
-                </p>
-              </div>
+            {/* Renderizado Condicional: Calendario o Lista */}
+            {viewMode === "calendar" ? (
+              <CalendarView tasks={tasks} />
             ) : (
-              <div className="space-y-3">
-                {filteredTasks.map((task) => (
-                  <div
-                    key={task.id}
-                    className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-start justify-between gap-4 transition-all hover:shadow-md"
-                  >
-                    <div className="space-y-2 flex-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3
-                          className={`font-semibold ${
-                            task.status === "Completada"
-                              ? "line-through text-gray-400"
-                              : "text-gray-800"
-                          }`}
-                        >
-                          {task.title}
-                        </h3>
-
-                        {/* Selector de Prioridad Interactivo */}
-                        <select
-                          value={task.priority || "Media"}
-                          onChange={(e) =>
-                            handleUpdatePriority(task, e.target.value)
-                          }
-                          className={`text-[11px] px-2 py-0.5 rounded-full font-semibold border cursor-pointer focus:outline-none transition-colors ${
-                            priorityColors[task.priority] ||
-                            priorityColors.Media
-                          }`}
-                        >
-                          <option
-                            value="Baja"
-                            className="bg-white text-gray-800"
-                          >
-                            Baja
-                          </option>
-                          <option
-                            value="Media"
-                            className="bg-white text-gray-800"
-                          >
-                            Media
-                          </option>
-                          <option
-                            value="Alta"
-                            className="bg-white text-gray-800"
-                          >
-                            Alta
-                          </option>
-                        </select>
-                      </div>
-
-                      {task.description && (
-                        <p className="text-sm text-gray-600 break-words overflow-hidden">
-                          {task.description}
-                        </p>
-                      )}
-
-                      <div className="flex items-center gap-3 pt-1 text-xs text-gray-500 flex-wrap">
-                        {/* Status Badge */}
-                        <span
-                          className={`inline-block px-2.5 py-0.5 rounded-full font-medium ${
-                            task.status === "Completada"
-                              ? "bg-green-100 text-green-700"
-                              : task.status === "En Progreso"
-                                ? "bg-yellow-100 text-yellow-700"
-                                : "bg-gray-100 text-gray-700"
-                          }`}
-                        >
-                          {task.status}
-                        </span>
-
-                        {/* Fecha Límite */}
-                        {task.dueDate && (
-                          <span className="flex items-center gap-1 text-gray-500 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
-                            <Calendar size={12} />
-                            {new Date(task.dueDate).toLocaleDateString()}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Iconos de Acción */}
-                    <div className="flex items-center gap-1 shrink-0">
-                      <button
-                        onClick={() => handleUpdateStatus(task, "Pendiente")}
-                        title="Marcar como Pendiente"
-                        className={`p-1.5 rounded-md transition-colors ${
-                          task.status === "Pendiente"
-                            ? "text-indigo-600 bg-indigo-50 font-bold"
-                            : "text-gray-400 hover:text-gray-600"
-                        }`}
-                      >
-                        <Clock size={18} />
-                      </button>
-                      <button
-                        onClick={() => handleUpdateStatus(task, "En Progreso")}
-                        title="Marcar En Progreso"
-                        className={`p-1.5 rounded-md transition-colors ${
-                          task.status === "En Progreso"
-                            ? "text-yellow-600 bg-yellow-50 font-bold"
-                            : "text-gray-400 hover:text-yellow-600"
-                        }`}
-                      >
-                        <PlayCircle size={18} />
-                      </button>
-                      <button
-                        onClick={() => handleUpdateStatus(task, "Completada")}
-                        title="Marcar Completada"
-                        className={`p-1.5 rounded-md transition-colors ${
-                          task.status === "Completada"
-                            ? "text-green-600 bg-green-50 font-bold"
-                            : "text-gray-400 hover:text-green-600"
-                        }`}
-                      >
-                        <CheckCircle2 size={18} />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteTask(task.id)}
-                        title="Eliminar Tarea"
-                        className="p-1.5 text-gray-400 hover:text-red-600 rounded-md transition-colors ml-1"
-                      >
-                        <Trash2 size={18} />
-                      </button>
-                    </div>
+              <>
+                {/* Buscador y Control de Filtros */}
+                <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-3">
+                  <div className="relative">
+                    <Search
+                      size={18}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                    />
+                    <input
+                      type="text"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      placeholder="Buscar tareas por título o descripción..."
+                      className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                    />
                   </div>
-                ))}
-              </div>
+
+                  {/* Botones de Filtro */}
+                  <div className="flex items-center gap-1.5 overflow-x-auto pt-1">
+                    {["Todas", "Pendiente", "En Progreso", "Completada"].map(
+                      (status) => (
+                        <button
+                          key={status}
+                          onClick={() => setFilterStatus(status)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
+                            filterStatus === status
+                              ? "bg-indigo-600 text-white shadow-sm"
+                              : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                          }`}
+                        >
+                          {status}
+                        </button>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                {/* Lista de Tareas */}
+                {loading ? (
+                  <p className="text-sm text-gray-500 py-8 text-center">
+                    Cargando tareas...
+                  </p>
+                ) : filteredTasks.length === 0 ? (
+                  <div className="bg-white p-12 rounded-xl shadow-sm border border-gray-100 text-center text-gray-500 space-y-2">
+                    <AlertCircle size={32} className="mx-auto text-gray-300" />
+                    <p className="font-medium text-gray-600">
+                      No se encontraron tareas
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      Intenta cambiar el filtro o agregar una nueva tarea.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {filteredTasks.map((task) => (
+                      <div
+                        key={task.id}
+                        className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-start justify-between gap-4 transition-all hover:shadow-md"
+                      >
+                        <div className="space-y-2 flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3
+                              className={`font-semibold ${
+                                task.status === "Completada"
+                                  ? "line-through text-gray-400"
+                                  : "text-gray-800"
+                              }`}
+                            >
+                              {task.title}
+                            </h3>
+
+                            {/* Selector de Prioridad Interactivo */}
+                            <select
+                              value={task.priority || "Media"}
+                              onChange={(e) =>
+                                handleUpdatePriority(task, e.target.value)
+                              }
+                              className={`text-[11px] px-2 py-0.5 rounded-full font-semibold border cursor-pointer focus:outline-none transition-colors ${
+                                priorityColors[task.priority] ||
+                                priorityColors.Media
+                              }`}
+                            >
+                              <option
+                                value="Baja"
+                                className="bg-white text-gray-800"
+                              >
+                                Baja
+                              </option>
+                              <option
+                                value="Media"
+                                className="bg-white text-gray-800"
+                              >
+                                Media
+                              </option>
+                              <option
+                                value="Alta"
+                                className="bg-white text-gray-800"
+                              >
+                                Alta
+                              </option>
+                            </select>
+                          </div>
+
+                          {task.description && (
+                            <p className="text-sm text-gray-600 break-words overflow-hidden">
+                              {task.description}
+                            </p>
+                          )}
+
+                          <div className="flex items-center gap-3 pt-1 text-xs text-gray-500 flex-wrap">
+                            {/* Status Badge */}
+                            <span
+                              className={`inline-block px-2.5 py-0.5 rounded-full font-medium ${
+                                task.status === "Completada"
+                                  ? "bg-green-100 text-green-700"
+                                  : task.status === "En Progreso"
+                                  ? "bg-yellow-100 text-yellow-700"
+                                  : "bg-gray-100 text-gray-700"
+                              }`}
+                            >
+                              {task.status}
+                            </span>
+
+                            {/* Fecha Límite */}
+                            {task.dueDate && (
+                              <span className="flex items-center gap-1 text-gray-500 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
+                                <Calendar size={12} />
+                                {new Date(task.dueDate).toLocaleDateString()}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Iconos de Acción */}
+                        <div className="flex items-center gap-1 shrink-0">
+                          <button
+                            onClick={() => handleUpdateStatus(task, "Pendiente")}
+                            title="Marcar como Pendiente"
+                            className={`p-1.5 rounded-md transition-colors ${
+                              task.status === "Pendiente"
+                                ? "text-indigo-600 bg-indigo-50 font-bold"
+                                : "text-gray-400 hover:text-gray-600"
+                            }`}
+                          >
+                            <Clock size={18} />
+                          </button>
+                          <button
+                            onClick={() => handleUpdateStatus(task, "En Progreso")}
+                            title="Marcar En Progreso"
+                            className={`p-1.5 rounded-md transition-colors ${
+                              task.status === "En Progreso"
+                                ? "text-yellow-600 bg-yellow-50 font-bold"
+                                : "text-gray-400 hover:text-yellow-600"
+                            }`}
+                          >
+                            <PlayCircle size={18} />
+                          </button>
+                          <button
+                            onClick={() => handleUpdateStatus(task, "Completada")}
+                            title="Marcar Completada"
+                            className={`p-1.5 rounded-md transition-colors ${
+                              task.status === "Completada"
+                                ? "text-green-600 bg-green-50 font-bold"
+                                : "text-gray-400 hover:text-green-600"
+                            }`}
+                          >
+                            <CheckCircle2 size={18} />
+                          </button>
+                          <button
+                            onClick={() => handleDeleteTask(task.id)}
+                            title="Eliminar Tarea"
+                            className="p-1.5 text-gray-400 hover:text-red-600 rounded-md transition-colors ml-1"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
