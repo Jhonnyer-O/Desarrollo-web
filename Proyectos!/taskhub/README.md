@@ -101,7 +101,7 @@ Los endpoints expuestos por la API RESTful de **TaskHub** se encuentran estructu
 | `DELETE` | `/api/tasks/:id` | Eliminar de forma permanente una tarea por su ID. | Parámetro de ruta: `id` | 🔒 Sí |
 
 ### 🛠️ Instalación de librerías y Dependencias
-⚙️ 1. Backend (taskhub-backend)
+#⚙️ 1. Backend (taskhub-backend)
 Comando de instalación en un solo paso:
 ```bash
 npm install express cors dotenv sequelize pg pg-hstore jsonwebtoken bcryptjs nodemailer node-cron
