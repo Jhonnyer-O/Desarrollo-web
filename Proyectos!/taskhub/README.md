@@ -99,3 +99,12 @@ Los endpoints expuestos por la API RESTful de **TaskHub** se encuentran estructu
 | `PUT` | `/api/tasks/:id` | Actualizar todos los campos de una tarea existente. | `{ "title", "description", "status", "priority", "dueDate" }` | 🔒 Sí |
 | `PATCH` | `/api/tasks/:id/status` | Actualizar únicamente el estado de una tarea. | `{ "status" }` | 🔒 Sí |
 | `DELETE` | `/api/tasks/:id` | Eliminar de forma permanente una tarea por su ID. | Parámetro de ruta: `id` | 🔒 Sí |
+
+### 🛠️ Instalación de librerías y Dependencias
+⚙️ 1. Backend (taskhub-backend)
+Comando de instalación en un solo paso:
+```bash
+npm install express cors dotenv sequelize pg pg-hstore jsonwebtoken bcryptjs nodemailer node-cron
+npm install -D nodemon
+```
+
