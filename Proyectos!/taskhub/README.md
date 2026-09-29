@@ -52,15 +52,19 @@ Este proyecto fue desarrollado como **Proyecto Integrador / MVP**, aplicando arq
 
 ```text
 taskhub/
-├── 📁 taskhub-backend/          # API RESTful en Node.js/Express
-│   ├── 📁 config/              # Configuración de Sequelize y Base de Datos
-│   ├── 📁 controllers/         # Lógica de negocio (authController, taskController)
-│   ├── 📁 middlewares/         # Middlewares de autenticación JWT y validaciones
-│   ├── 📁 models/              # Modelos de datos (User, Task, Category)
-│   ├── 📁 routes/              # Endpoints de la API REST
-│   ├── 📄 .env.example         # Plantilla de variables de entorno
-│   ├── 📄 app.js               # Punto de entrada del servidor
-│   └── 📄 package.json
+├── 📁 taskhub-backend/
+├    ├── 📁 src/                           # Código fuente principal del servidor
+│    │     ├── 📁 config/                    # Configuración de base de datos y Sequelize
+│    │     ├── 📁 controllers/               # Controladores de lógica de negocio (authController, taskController)
+│    │     ├── 📁 middlewares/               # Middlewares de validación y autenticación JWT
+│    │     ├── 📁 models/                    # Modelos de datos de Sequelize (User, Task, Category)
+│    │     ├── 📁 routes/                    # Definición de rutas de la API REST
+│    │     └── 📄 app.js
+│    ├── 📄 .env.example                   # ⚠️ Plantilla de variables de entorno (Renombrado desde .env)
+│    ├── 📄 .gitignore                     # Archivo para excluir node_modules/ y .env
+│    ├── 📄 package.json                   # Gestión de dependencias y scripts de ejecución
+│    ├── 📄 package-lock.json              # Registro de versiones exactas de dependencias
+│    └── 📄 README.md
 │
 └── 📁 taskhub-frontend/         # Cliente Web Single Page Application (SPA) en React
     ├── 📁 src/
