@@ -1,4 +1,10 @@
-﻿# PSTI Tasks
+# Evicencias:
+
+## Pruebas en postman del proyecto:
+
+###https://docs.google.com/document/d/1Q5RvKNHyR2mQIqu9rI9_KNpWIX2sJUpNVB_BtY_tjj0/edit?usp=sharing
+ 
+ # PSTI Tasks
 Aplicación para crear tareas desplegada en Heroku usando NodeJS, Express, MongoDB y Vue
 
 ## Verificando requerimientos
