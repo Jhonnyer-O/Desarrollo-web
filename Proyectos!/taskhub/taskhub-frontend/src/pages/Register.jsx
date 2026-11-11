@@ -12,10 +12,18 @@ const Register = () => {
   const { register } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // Validación rápida de los 6 caracteres mínimos que exige Supabase
+  const isPasswordValid = password.length >= 6;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
+
+    if (!isPasswordValid) {
+      setError('La contraseña debe tener al menos 6 caracteres.');
+      return;
+    }
 
     try {
       await register(fullName, email, password);
@@ -24,7 +32,7 @@ const Register = () => {
         navigate('/login');
       }, 2000);
     } catch (err) {
-      setError(err.response?.data?.message || 'Error al registrar el usuario');
+      setError(err.message || 'Error al registrar el usuario');
     }
   };
 
@@ -92,6 +100,10 @@ const Register = () => {
               className="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               placeholder="••••••••"
             />
+            {/* Texto de ayuda dinámico para guiar al usuario */}
+            <p className={`mt-1 text-xs ${password.length > 0 && !isPasswordValid ? 'text-red-500' : 'text-gray-500'}`}>
+              Debe tener al menos 6 caracteres.
+            </p>
           </div>
 
           <button

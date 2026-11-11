@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useMemo } from "react";
 import CalendarView from "../components/CalendarView";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext, useAuth } from "../context/AuthContext";
 import api from "../api/axios";
 import {
   LogOut,
@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 
 const Dashboard = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, profile, logout } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -189,7 +189,7 @@ const Dashboard = () => {
             <span className="text-sm font-medium text-gray-600">
               Hola,{" "}
               <strong className="text-gray-900">
-                {user?.fullName || user?.name || "Usuario"}
+                {profile?.full_name || user?.fullName || user?.name || "Usuario"}
               </strong>
             </span>
             <button
