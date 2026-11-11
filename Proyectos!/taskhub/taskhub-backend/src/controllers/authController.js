@@ -1,5 +1,6 @@
-const User = require('../models/User');
+const User = require('../models/Profile');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt'); // Asegúrate de que esté una sola vez
 
 exports.register = async (req, res) => {
   try {
@@ -10,11 +11,15 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: 'El correo electrónico ya está registrado.' });
     }
 
-    const user = await User.create({ fullName, email, password });
+    const user = await User.create({ 
+      full_name: fullName, 
+      email, 
+      password 
+    });
 
     res.status(201).json({
       message: 'Usuario registrado exitosamente',
-      user: { id: user.id, fullName: user.fullName, email: user.email },
+      user: { id: user.id, fullName: user.full_name, email: user.email },
     });
   } catch (error) {
     res.status(500).json({ message: 'Error en el servidor', error: error.message });
@@ -30,8 +35,9 @@ exports.login = async (req, res) => {
       return res.status(404).json({ message: 'Credenciales incorrectas.' });
     }
 
-    const isValid = await user.validPassword(password);
-    if (!isValid) {
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    
+    if (!isPasswordValid) {
       return res.status(400).json({ message: 'Credenciales incorrectas.' });
     }
 
@@ -44,9 +50,10 @@ exports.login = async (req, res) => {
     res.status(200).json({
       message: 'Inicio de sesión exitoso',
       token,
-      user: { id: user.id, fullName: user.fullName, email: user.email },
+      user: { id: user.id, fullName: user.full_name, email: user.email },
     });
   } catch (error) {
+    console.error("Error en login:", error);
     res.status(500).json({ message: 'Error en el servidor', error: error.message });
   }
 };

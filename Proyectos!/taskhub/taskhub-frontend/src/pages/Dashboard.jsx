@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext, useMemo } from "react";
 import CalendarView from "../components/CalendarView";
 import { AuthContext, useAuth } from "../context/AuthContext";
@@ -22,6 +23,7 @@ const Dashboard = () => {
   const { user, profile, logout } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   // Campos del Formulario
   const [title, setTitle] = useState("");
@@ -192,6 +194,17 @@ const Dashboard = () => {
                 {profile?.full_name || user?.fullName || user?.name || "Usuario"}
               </strong>
             </span>
+
+            {/* Botón exclusivo para Administrador */}
+            {profile?.role === 'ADMIN' && (
+              <button
+                onClick={() => navigate('/admin')}
+                className="text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-lg transition-colors font-medium shadow-sm"
+              >
+                Administrar Usuarios
+              </button>
+            )}
+
             <button
               onClick={logout}
               className="flex items-center gap-1.5 text-sm bg-gray-100 hover:bg-red-50 hover:text-red-600 text-gray-700 px-3 py-1.5 rounded-lg transition-colors font-medium"
