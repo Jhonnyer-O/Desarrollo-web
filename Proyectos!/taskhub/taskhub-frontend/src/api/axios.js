@@ -1,15 +1,17 @@
 import axios from 'axios';
+import { supabase } from './supabase';
 import Swal from 'sweetalert2';
 
 const api = axios.create({
   baseURL: 'http://localhost:5000/api',
 });
 
+// Interceptor para inyectar automáticamente el token de Supabase en cada petición
 api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+  async (config) => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.access_token) {
+      config.headers.Authorization = `Bearer ${session.access_token}`;
     }
     return config;
   },
@@ -21,18 +23,15 @@ let isAlertShowing = false;
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Imprime el error exacto en consola para depurar
     console.log('Error capturado por el interceptor:', error.response);
 
     const status = error.response ? error.response.status : null;
 
-    // Captura 401 (No autorizado) o 403 (Prohibido/Token inválido)
     if (status === 401 || status === 403) {
       if (!isAlertShowing) {
         isAlertShowing = true;
 
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        supabase.auth.signOut();
 
         Swal.fire({
           title: 'Sesión Caducada',
