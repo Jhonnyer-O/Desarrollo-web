@@ -3,8 +3,9 @@ import { AuthProvider } from './context/AuthContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
-import AdminDashboard from './pages/AdminDashboard'; // <-- Importa el componente del panel admin
+import AdminDashboard from './pages/AdminDashboard';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute'; // <-- 1. Importa el componente de ruta de admin
 
 function App() {
   return (
@@ -21,13 +22,13 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* Ruta protegida para el Administrador */}
+          {/* Ruta protegida y exclusiva para el Administrador */}
           <Route
             path="/admin"
             element={
-              <PrivateRoute>
+              <AdminRoute> {/* <-- 2. Usa AdminRoute en lugar de PrivateRoute */}
                 <AdminDashboard />
-              </PrivateRoute>
+              </AdminRoute>
             }
           />
           <Route path="*" element={<Navigate to="/login" />} />

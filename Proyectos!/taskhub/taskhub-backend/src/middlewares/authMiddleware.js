@@ -1,4 +1,5 @@
 const { createClient } = require('@supabase/supabase-js');
+const { User } = require('../models');
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -22,8 +23,25 @@ const verifyToken = async (req, res, next) => {
       return res.status(401).json({ message: 'Token inválido o expirado.' });
     }
 
-    // Asignamos el ID de usuario de Supabase para los controladores
-    req.user = { id: user.id };
+    // Buscamos perfil local si existe para obtener role y full_name sin romper si no está
+    let profile = null;
+    if (User) {
+      try {
+        profile = await User.findByPk(user.id, {
+          attributes: ['id', 'role', 'full_name', 'email'],
+        });
+      } catch (dbErr) {
+        console.warn('No se pudo consultar perfil local en authMiddleware:', dbErr.message);
+      }
+    }
+
+    req.user = {
+      id: user.id,
+      email: user.email || profile?.email || null,
+      role: profile?.role || user.app_metadata?.role || user.user_metadata?.role || 'USER',
+      full_name: profile?.full_name || user.user_metadata?.full_name || null,
+    };
+
     next();
   } catch (error) {
     console.error('Error en middleware:', error);

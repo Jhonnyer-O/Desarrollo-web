@@ -3,8 +3,10 @@ const router = express.Router();
 const taskController = require('../controllers/taskController');
 const verifyToken = require('../middlewares/authMiddleware');
 
-// Protege todas las rutas de tareas con el middleware de JWT
 router.use(verifyToken);
+
+// Lista de usuarios activos disponibles para asignar como colaboradores
+router.get('/users', taskController.getAvailableUsers);
 
 router.get('/', taskController.getTasks);
 router.post('/', taskController.createTask);

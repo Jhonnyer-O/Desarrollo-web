@@ -16,23 +16,43 @@ const Task = sequelize.define('Task', {
     allowNull: true,
   },
   dueDate: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: true,
+    field: 'due_date',
   },
   priority: {
-    type: DataTypes.ENUM('Baja', 'Media', 'Alta'),
+    type: DataTypes.STRING,
     defaultValue: 'Media',
   },
   status: {
-    type: DataTypes.ENUM('Pendiente', 'En Progreso', 'Completada'),
+    type: DataTypes.STRING,
     defaultValue: 'Pendiente',
   },
-  isNotified: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
+  projectId: {
+    type: DataTypes.UUID,
+    allowNull: true,
+    field: 'project_id',
+  },
+  createdBy: {
+    type: DataTypes.UUID,
+    allowNull: true,
+    field: 'created_by',
+  },
+  assignedTo: {
+    type: DataTypes.UUID,
+    allowNull: true,
+    field: 'assigned_to',
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    field: 'created_at',
   },
 }, {
+  tableName: 'tasks',
+  schema: 'public',
   timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: false,
 });
 
 module.exports = Task;
